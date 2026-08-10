@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Finance Daily — {{ page_title }}{% endblock %}
+{% block content %}
+
+<div class="hero">
+  <div class="eyebrow">{{ page_title }}</div>
+  <h1>{{ page_headline }}</h1>
+  <p class="lede">{{ page_lede }}</p>
+</div>
+
+{% for grp in groups %}
+<h2 class="section-title">{{ grp.title }}</h2>
+<table class="data">
+  <thead>
+    <tr>
+      <th style="text-align:left;">Actif</th>
+      <th>Valeur</th>
+      <th>Jour</th>
+      <th>Semaine</th>
+      <th>Début de mois</th>
+      <th>YTD</th>
+      <th>1 an</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in grp.rows %}
+  <tr>
+    <td>{{ row.name }}</td>
+    <td>{{ row.value }}</td>
+    <td class="{{ row.day_cls }}">{{ row.day }}</td>
+    <td class="{{ row.week_cls }}">{{ row.week }}</td>
+    <td class="{{ row.mtd_cls }}">{{ row.mtd }}</td>
+    <td class="{{ row.ytd_cls }}">{{ row.ytd }}</td>
+    <td class="{{ row.y1_cls }}">{{ row.y1 }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% if grp.commentaire %}
+<div class="analysis"><p>{{ grp.commentaire }}</p></div>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

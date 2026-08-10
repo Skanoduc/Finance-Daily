@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Finance Daily — Deep Dives{% endblock %}
+{% block content %}
+
+<div class="hero">
+  <div class="eyebrow">Analyses approfondies</div>
+  <h1>Pourquoi ça bouge aujourd'hui</h1>
+  <p class="lede">Zoom sur les mouvements les plus significatifs du jour et leurs causes.</p>
+</div>
+
+{% for dd in deepdives %}
+<div class="deepdive">
+  <span class="tag">{{ dd.tag }}</span>
+  <h2 class="section-title" style="margin-top:0;border:none;padding:0;">{{ dd.title }}</h2>
+  {% for para in dd.paragraphs %}
+  <p style="margin-bottom:10px;color:var(--text-muted);">{{ para }}</p>
+  {% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}

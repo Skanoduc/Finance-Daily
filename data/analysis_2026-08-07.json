@@ -1,0 +1,48 @@
+{
+  "headline": "Les actions technologiques US reculent, l'Asie et l'or progressent",
+  "headline_sub": "Nvidia et Tesla pèsent sur Wall Street pendant que le Nikkei et le Hang Seng enchaînent une bonne semaine.",
+  "synthese": [
+    "Journée contrastée entre les zones géographiques. Wall Street a terminé en léger repli, entraîné par les valeurs technologiques : le Nasdaq perd 0,61% et le Russell 2000 des petites capitalisations recule de 0,85%, signe d'une prudence accrue sur les actifs les plus sensibles au cycle.",
+    "En Europe, les indices ont mieux résisté : le CAC 40 gagne 0,62% porté notamment par LVMH (+2,8%), tandis que le FTSE MIB italien affiche la meilleure performance régionale sur cinq séances.",
+    "En Asie, le Hang Seng poursuit sa dynamique avec +1,45% sur la journée et +3% sur la semaine, portée par les valeurs technologiques chinoises, pendant que le Nikkei profite d'un yen plus faible pour progresser de 1,12%.",
+    "Sur les matières premières, l'or continue son ascension (+0,88%, +19,4% depuis le début de l'année) dans un contexte de recherche de valeurs refuges, tandis que le pétrole recule nettement (WTI -1,85%) sur fond d'inquiétudes autour de la demande."
+  ],
+  "a_venir": [
+    "Les prochains indicateurs d'inflation américains (CPI) seront scrutés de près après la légère hausse du taux de chômage US à 4,1%, qui pourrait relancer le débat sur le rythme des baisses de taux de la Fed. Les résultats trimestriels encore attendus dans la tech pourraient également accentuer la volatilité sur le Nasdaq."
+  ],
+  "commentaire_indices_europe": "Séance globalement positive en Europe, portée par le luxe et les valeurs domestiques italiennes et espagnoles.",
+  "commentaire_indices_us": "Repli modéré mais généralisé sur les indices américains, la faiblesse des small caps (Russell 2000) traduisant une aversion au risque ponctuelle.",
+  "commentaire_indices_asie": "Meilleure zone du jour, Hong Kong et Tokyo en tête, portées par des facteurs domestiques (tech chinoise, yen faible).",
+  "commentaire_devises": "Le dollar se renforce légèrement face au yen (USD/JPY -0,42% signifie un yen plus fort en réalité sur la journée) tandis que l'euro reste stable autour de 1,09.",
+  "commentaire_matieres_premieres": "Divergence marquée entre métaux précieux (recherche de valeur refuge) et énergie (craintes sur la demande mondiale).",
+  "deepdives": [
+    {
+      "tag": "ACTION",
+      "title": "Tesla (-4,2%) : la plus forte baisse du jour",
+      "paragraphs": [
+        "Tesla accuse la plus forte baisse de la watchlist du jour avec -4,2%, portant son repli hebdomadaire à -6,8%. Sur les données disponibles, le titre reste toutefois en territoire légèrement positif sur un an (+5,4%), ce qui indique une correction plutôt qu'un retournement de tendance structurel. Ce type de mouvement sur une valeur aussi suivie mérite d'être recoupé avec l'actualité spécifique du jour (annonces de livraisons, notes d'analystes) pour une explication complète."
+      ]
+    },
+    {
+      "tag": "ACTION",
+      "title": "LVMH (+2,8%) : le luxe résiste",
+      "paragraphs": [
+        "LVMH signe la meilleure performance de la watchlist européenne avec +2,8% sur la journée et +4,5% sur la semaine, alors même que le titre reste en retrait depuis le début de l'année (-3,1% YTD). Ce rebond hebdomadaire, dans un secteur du luxe historiquement volatil et sensible à la demande chinoise, contraste avec la tendance annuelle encore négative."
+      ]
+    },
+    {
+      "tag": "MATIÈRE PREMIÈRE",
+      "title": "Or (+0,88%) : nouveau plus haut relatif, +19,4% YTD",
+      "paragraphs": [
+        "L'or poursuit une progression remarquable depuis le début de l'année (+19,4%), et gagne encore 0,88% sur la séance. Cette dynamique, conjuguée à la hausse simultanée de l'argent (+1,2%), est cohérente avec un mouvement de recherche de valeurs refuges plutôt qu'avec un facteur isolé au métal lui-même."
+      ]
+    },
+    {
+      "tag": "INDICE",
+      "title": "Hang Seng (+1,45%) : meilleure séance parmi les grands indices",
+      "paragraphs": [
+        "Le Hang Seng signe la meilleure performance journalière de l'ensemble des indices suivis, prolongeant une semaine déjà solide (+3%) et portant sa performance YTD à +22,1%, très largement en tête de tous les indices suivis dans ce rapport."
+      ]
+    }
+  ]
+}

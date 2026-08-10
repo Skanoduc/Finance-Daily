@@ -1,0 +1,62 @@
+{
+  "date": "2026-08-07",
+  "indices": {
+    "Europe": {
+      "^FCHI": {"name": "CAC 40", "value": 7842.15, "day": 0.62, "week": 1.34, "mtd": 0.62, "ytd": 6.8, "y1": 11.2},
+      "^GDAXI": {"name": "DAX", "value": 19230.4, "day": 0.41, "week": 0.98, "mtd": 0.41, "ytd": 9.1, "y1": 15.6},
+      "^FTSE": {"name": "FTSE 100", "value": 8390.2, "day": -0.18, "week": 0.22, "mtd": -0.18, "ytd": 4.3, "y1": 7.9},
+      "^STOXX50E": {"name": "Euro Stoxx 50", "value": 5120.6, "day": 0.55, "week": 1.1, "mtd": 0.55, "ytd": 7.4, "y1": 12.0},
+      "FTSEMIB.MI": {"name": "FTSE MIB", "value": 34890.1, "day": 0.73, "week": 1.5, "mtd": 0.73, "ytd": 10.2, "y1": 18.3},
+      "^IBEX": {"name": "IBEX 35", "value": 11920.8, "day": 0.29, "week": 0.6, "mtd": 0.29, "ytd": 12.5, "y1": 20.1}
+    },
+    "États-Unis": {
+      "^GSPC": {"name": "S&P 500", "value": 5980.3, "day": -0.34, "week": 0.5, "mtd": -0.34, "ytd": 13.2, "y1": 21.4},
+      "^IXIC": {"name": "Nasdaq Composite", "value": 19340.7, "day": -0.61, "week": 0.3, "mtd": -0.61, "ytd": 15.8, "y1": 24.9},
+      "^DJI": {"name": "Dow Jones", "value": 42980.1, "day": -0.12, "week": 0.4, "mtd": -0.12, "ytd": 9.4, "y1": 16.2},
+      "^RUT": {"name": "Russell 2000", "value": 2210.5, "day": -0.85, "week": -0.2, "mtd": -0.85, "ytd": 5.1, "y1": 12.8}
+    },
+    "Asie-Pacifique": {
+      "^N225": {"name": "Nikkei 225", "value": 40120.6, "day": 1.12, "week": 2.1, "mtd": 1.12, "ytd": 8.9, "y1": 19.4},
+      "^HSI": {"name": "Hang Seng", "value": 19850.3, "day": 1.45, "week": 3.0, "mtd": 1.45, "ytd": 22.1, "y1": 31.5},
+      "000001.SS": {"name": "Shanghai Composite", "value": 3210.4, "day": 0.34, "week": 1.0, "mtd": 0.34, "ytd": 11.3, "y1": 14.2},
+      "^AXJO": {"name": "ASX 200", "value": 8320.1, "day": 0.21, "week": 0.5, "mtd": 0.21, "ytd": 6.5, "y1": 10.1},
+      "^KS11": {"name": "KOSPI", "value": 2810.9, "day": 0.58, "week": 1.3, "mtd": 0.58, "ytd": 9.8, "y1": 17.0}
+    }
+  },
+  "devises": {
+    "EURUSD=X": {"name": "EUR/USD", "value": 1.0912, "day": 0.15, "week": 0.4, "mtd": 0.15, "ytd": 3.2, "y1": 2.1},
+    "GBPUSD=X": {"name": "GBP/USD", "value": 1.2745, "day": -0.08, "week": 0.1, "mtd": -0.08, "ytd": 1.8, "y1": 0.9},
+    "USDJPY=X": {"name": "USD/JPY", "value": 148.32, "day": -0.42, "week": -1.1, "mtd": -0.42, "ytd": -4.5, "y1": -6.2},
+    "EURGBP=X": {"name": "EUR/GBP", "value": 0.8562, "day": 0.05, "week": 0.2, "mtd": 0.05, "ytd": 1.4, "y1": 1.1},
+    "USDCNY=X": {"name": "USD/CNY", "value": 7.185, "day": 0.02, "week": 0.05, "mtd": 0.02, "ytd": -0.8, "y1": -1.2}
+  },
+  "matieres_premieres": {
+    "GC=F": {"name": "Or (Gold)", "value": 2415.6, "day": 0.88, "week": 1.9, "mtd": 0.88, "ytd": 19.4, "y1": 27.3},
+    "SI=F": {"name": "Argent (Silver)", "value": 29.4, "day": 1.2, "week": 2.5, "mtd": 1.2, "ytd": 21.1, "y1": 33.8},
+    "CL=F": {"name": "Pétrole WTI", "value": 74.2, "day": -1.85, "week": -3.2, "mtd": -1.85, "ytd": -6.1, "y1": -8.4},
+    "BZ=F": {"name": "Pétrole Brent", "value": 77.9, "day": -1.7, "week": -3.0, "mtd": -1.7, "ytd": -5.4, "y1": -7.1},
+    "NG=F": {"name": "Gaz naturel", "value": 3.12, "day": 2.4, "week": 4.1, "mtd": 2.4, "ytd": 14.2, "y1": 22.0},
+    "HG=F": {"name": "Cuivre", "value": 4.35, "day": 0.6, "week": 1.4, "mtd": 0.6, "ytd": 18.9, "y1": 25.4}
+  },
+  "actions": {
+    "AAPL": {"name": "Apple", "value": 231.4, "day": -0.9, "week": 0.2, "mtd": -0.9, "ytd": 18.2, "y1": 25.1},
+    "MSFT": {"name": "Microsoft", "value": 468.2, "day": -0.3, "week": 0.6, "mtd": -0.3, "ytd": 22.4, "y1": 29.8},
+    "NVDA": {"name": "Nvidia", "value": 142.8, "day": -3.4, "week": -2.1, "mtd": -3.4, "ytd": 45.2, "y1": 68.9},
+    "AMZN": {"name": "Amazon", "value": 198.6, "day": 0.4, "week": 1.2, "mtd": 0.4, "ytd": 16.8, "y1": 24.3},
+    "GOOGL": {"name": "Alphabet", "value": 189.3, "day": 0.2, "week": 0.9, "mtd": 0.2, "ytd": 19.5, "y1": 27.0},
+    "META": {"name": "Meta", "value": 612.4, "day": 1.1, "week": 2.4, "mtd": 1.1, "ytd": 31.2, "y1": 42.6},
+    "TSLA": {"name": "Tesla", "value": 268.9, "day": -4.2, "week": -6.8, "mtd": -4.2, "ytd": -8.9, "y1": 5.4},
+    "MC.PA": {"name": "LVMH", "value": 685.2, "day": 2.8, "week": 4.5, "mtd": 2.8, "ytd": -3.1, "y1": 2.4},
+    "OR.PA": {"name": "L'Oréal", "value": 385.6, "day": 0.6, "week": 1.1, "mtd": 0.6, "ytd": 5.2, "y1": 8.9},
+    "TTE.PA": {"name": "TotalEnergies", "value": 62.4, "day": -0.8, "week": -1.5, "mtd": -0.8, "ytd": 2.1, "y1": 4.5},
+    "SAP.DE": {"name": "SAP", "value": 245.8, "day": 0.9, "week": 1.8, "mtd": 0.9, "ytd": 24.6, "y1": 32.1},
+    "ASML.AS": {"name": "ASML", "value": 892.4, "day": -1.6, "week": -0.4, "mtd": -1.6, "ytd": 12.3, "y1": 19.8},
+    "NESN.SW": {"name": "Nestlé", "value": 92.8, "day": 0.3, "week": 0.5, "mtd": 0.3, "ytd": -4.2, "y1": -2.1}
+  },
+  "macro": {
+    "FEDFUNDS": {"label": "Taux directeur Fed", "latest": "4.33", "latest_date": "2026-07-01", "previous": "4.58"},
+    "CPIAUCSL": {"label": "Inflation US (CPI)", "latest": "313.2", "latest_date": "2026-07-01", "previous": "312.4"},
+    "UNRATE": {"label": "Taux de chômage US", "latest": "4.1", "latest_date": "2026-07-01", "previous": "4.0"},
+    "DGS10": {"label": "Taux 10 ans US", "latest": "4.22", "latest_date": "2026-08-06", "previous": "4.18"}
+  }
+}

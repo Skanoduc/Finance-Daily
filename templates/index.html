@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Finance Daily — Aperçu du {{ date_label }}{% endblock %}
+{% block content %}
+
+<div class="hero">
+  <div class="eyebrow">Titre du jour</div>
+  <h1>{{ headline }}</h1>
+  <p class="lede">{{ headline_sub }}</p>
+</div>
+
+<div class="analysis">
+  {% for para in synthese %}
+  <p>{{ para }}</p>
+  {% endfor %}
+</div>
+
+<h2 class="section-title"><span class="index">01</span>Indices — vue d'ensemble</h2>
+<div class="grid">
+  {% for idx in indices_overview %}
+  <div class="card">
+    <div class="name">{{ idx.name }}</div>
+    <div class="value">{{ idx.value }}</div>
+    <div class="chgs">
+      <span><span class="label">Jour</span><span class="{{ idx.day_cls }}">{{ idx.day }}</span></span>
+      <span><span class="label">Sem.</span><span class="{{ idx.week_cls }}">{{ idx.week }}</span></span>
+      <span><span class="label">YTD</span><span class="{{ idx.ytd_cls }}">{{ idx.ytd }}</span></span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<h2 class="section-title"><span class="index">02</span>Plus fortes variations du jour</h2>
+<table class="data">
+  <thead><tr><th>Actif</th><th>Valeur</th><th>Variation jour</th></tr></thead>
+  <tbody>
+  {% for m in top_movers %}
+  <tr><td>{{ m.name }}</td><td>{{ m.value }}</td><td class="{{ m.cls }}">{{ m.chg }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<h2 class="section-title"><span class="index">03</span>À surveiller demain</h2>
+<div class="analysis">
+  {% for para in a_venir %}
+  <p>{{ para }}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
