@@ -1,0 +1,37 @@
+{
+  "date": "2026-08-11",
+  "indices": {
+    "Europe": {},
+    "États-Unis": {},
+    "Asie-Pacifique": {}
+  },
+  "devises": {},
+  "matieres_premieres": {},
+  "actions": {},
+  "macro": {
+    "FEDFUNDS": {
+      "label": "Taux directeur Fed",
+      "latest": "3.6300000000",
+      "latest_date": "2026-07-01",
+      "previous": "3.63"
+    },
+    "CPIAUCSL": {
+      "label": "Inflation US (CPI)",
+      "latest": "332.568",
+      "latest_date": "2026-06-01",
+      "previous": "333.979"
+    },
+    "UNRATE": {
+      "label": "Taux de chômage US",
+      "latest": "4.1",
+      "latest_date": "2026-07-01",
+      "previous": "4.2"
+    },
+    "DGS10": {
+      "label": "Taux 10 ans US",
+      "latest": "4.6500000000",
+      "latest_date": "2026-08-07",
+      "previous": "4.6900000000"
+    }
+  }
+}

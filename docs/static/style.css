@@ -1,0 +1,261 @@
+/* ============================================================
+   FINANCE DAILY — identité "terminal de marché", pas de template IA
+   Tokens : voir README section design
+   ============================================================ */
+
+:root {
+  --bg: #0E1116;
+  --surface: #161B22;
+  --surface-alt: #1C2330;
+  --border: #2A3241;
+  --text: #ECEEF1;
+  --text-muted: #8B93A1;
+  --accent: #C9A227;
+  --positive: #3FB68B;
+  --negative: #E2574C;
+  --neutral: #8B93A1;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Ticker signature element ---------- */
+.ticker {
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0 24px;
+  scrollbar-width: none;
+}
+.ticker::-webkit-scrollbar { display: none; }
+.ticker-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 20px;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.ticker-item .name { color: var(--text-muted); }
+.ticker-item .chg.pos { color: var(--positive); }
+.ticker-item .chg.neg { color: var(--negative); }
+.ticker-item .chg.flat { color: var(--neutral); }
+
+/* ---------- Header / nav ---------- */
+header.site {
+  padding: 20px 24px 0 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+.brand .dot { color: var(--accent); }
+.datestamp {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+nav.site {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+nav.site a {
+  font-size: 13px;
+  padding: 10px 14px;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+nav.site a:hover { color: var(--text); }
+nav.site a.active {
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+}
+
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 24px 80px 24px;
+}
+
+/* ---------- Hero (page d'accueil) ---------- */
+.hero {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
+  border-radius: 4px;
+  padding: 36px 32px;
+  margin-bottom: 36px;
+}
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.2;
+  max-width: 22ch;
+  margin-bottom: 16px;
+}
+.hero p.lede {
+  color: var(--text-muted);
+  max-width: 68ch;
+  font-size: 15.5px;
+}
+
+/* ---------- Section titles ---------- */
+h2.section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 20px;
+  margin: 44px 0 16px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+h2.section-title .index {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+/* ---------- Cards / grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.card {
+  background: var(--surface);
+  padding: 18px 20px;
+}
+.card .name {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.card .value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.card .chgs {
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  flex-wrap: wrap;
+}
+.card .chgs span.label { color: var(--text-muted); margin-right: 3px; }
+.pos { color: var(--positive); }
+.neg { color: var(--negative); }
+.flat { color: var(--neutral); }
+
+/* ---------- Data table ---------- */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+table.data th {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+table.data th:first-child { text-align: left; }
+table.data td {
+  text-align: right;
+  font-family: var(--font-mono);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+table.data td:first-child {
+  text-align: left;
+  font-family: var(--font-body);
+}
+table.data tr:hover td { background: var(--surface); }
+
+/* ---------- Analysis / narrative blocks ---------- */
+.analysis {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  margin: 18px 0;
+  font-size: 15px;
+}
+.analysis p + p { margin-top: 10px; }
+
+/* ---------- Deep dive ---------- */
+.deepdive {
+  border: 1px solid var(--border);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.deepdive .tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--bg);
+  background: var(--accent);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+footer.site {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 24px 60px 24px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  main { padding: 28px 16px 60px 16px; }
+  header.site { padding: 16px 16px 0 16px; }
+}
