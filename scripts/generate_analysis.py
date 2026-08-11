@@ -19,6 +19,7 @@ import anthropic
 
 MODEL = "claude-sonnet-4-6"  # rapport qualité/prix adapté à une tâche quotidienne de ce type
 MAX_SEARCH_ROUNDS = 8  # limite de sécurité sur le nombre d'allers-retours avec l'outil de recherche
+MAX_TOKENS = 12000  # volume généreux : recherches + synthèse + 3-6 deep dives sourcés, ça prend de la place
 
 
 SYSTEM_PROMPT = """Tu es un analyste financier senior qui rédige la synthèse quotidienne
@@ -33,7 +34,9 @@ jamais des chiffres seuls pour un deep dive : cherche toujours le "pourquoi" ré
 de chaque source utilisée.
 
 Une fois tes recherches terminées, ta réponse finale doit être UNIQUEMENT le JSON demandé,
-sans texte avant/après, sans balises markdown, sans commentaire sur tes recherches."""
+sans texte avant/après, sans balises markdown, sans commentaire sur tes recherches. N'écris
+aucune phrase d'introduction du type "Let me compile..." ou "I now have enough information" :
+ton tout dernier message doit commencer directement par l'accolade ouvrante du JSON."""
 
 
 def build_user_prompt(raw: dict) -> str:
@@ -89,7 +92,7 @@ def run_with_web_search(client, raw):
     for _ in range(MAX_SEARCH_ROUNDS):
         resp = client.messages.create(
             model=MODEL,
-            max_tokens=6000,
+            max_tokens=MAX_TOKENS,
             system=SYSTEM_PROMPT,
             messages=messages,
             tools=tools,
@@ -99,6 +102,12 @@ def run_with_web_search(client, raw):
             # Recherche encore en cours -> on renvoie le contenu tel quel pour continuer
             messages.append({"role": "assistant", "content": resp.content})
             continue
+
+        if resp.stop_reason == "max_tokens":
+            raise RuntimeError(
+                f"Réponse coupée avant la fin (max_tokens={MAX_TOKENS} atteint). "
+                f"Augmente MAX_TOKENS dans le script."
+            )
 
         text_blocks = [b.text for b in resp.content if b.type == "text"]
         text = "\n".join(text_blocks).strip()
@@ -112,6 +121,17 @@ def run_with_web_search(client, raw):
     raise RuntimeError("Trop d'allers-retours (pause_turn) sans réponse finale")
 
 
+def extract_json(text: str) -> str:
+    """Isole le premier objet JSON valide dans le texte, même si Claude a
+    ajouté du texte de narration avant/après (ex: 'Let me research...') malgré
+    la consigne de ne répondre qu'en JSON."""
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end < start:
+        raise ValueError(f"Aucun objet JSON trouvé dans la réponse :\n{text}")
+    return text[start:end + 1]
+
+
 def main():
     date_str = sys.argv[1] if len(sys.argv) > 1 else dt.date.today().isoformat()
     raw_path = f"data/raw_{date_str}.json"
@@ -122,10 +142,11 @@ def main():
     client = anthropic.Anthropic()  # lit ANTHROPIC_API_KEY depuis l'environnement
 
     text = run_with_web_search(client, raw)
-    # Sécurité : au cas où le modèle encadrerait quand même sa réponse de ```json
-    text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+    # Extraction robuste : isole le JSON même si Claude a ajouté du texte
+    # de narration avant/après malgré la consigne, ou des balises ```json.
+    json_text = extract_json(text)
     try:
-        analysis = json.loads(text)
+        analysis = json.loads(json_text)
     except json.JSONDecodeError as e:
         print("[erreur] Impossible de parser la réponse de Claude en JSON.")
         print("--- Réponse brute reçue ---")
