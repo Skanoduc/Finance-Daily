@@ -75,8 +75,14 @@ d'inventer une explication."""
 
 
 def run_with_web_search(client, raw):
-    """Boucle d'appels à l'API en laissant Claude utiliser l'outil web_search
-    autant de fois que nécessaire, jusqu'à obtenir la réponse finale en texte."""
+    """Appelle l'API avec l'outil web_search activé. web_search est un outil
+    "serveur" : Anthropic exécute les recherches en interne, on n'a pas à
+    gérer manuellement des allers-retours de type tool_result comme pour un
+    outil personnalisé.
+
+    Le seul cas où l'on doit rappeler l'API nous-même est "pause_turn"
+    (recherche encore en cours côté serveur) : on renvoie alors simplement
+    le contenu déjà généré et Claude reprend là où il s'est arrêté."""
     messages = [{"role": "user", "content": build_user_prompt(raw)}]
     tools = [{"type": "web_search_20250305", "name": "web_search"}]
 
@@ -89,21 +95,21 @@ def run_with_web_search(client, raw):
             tools=tools,
         )
 
-        if resp.stop_reason != "tool_use":
-            # Claude a fini ses recherches et a répondu -> on récupère le texte
-            text_blocks = [b.text for b in resp.content if b.type == "text"]
-            return "\n".join(text_blocks).strip()
+        if resp.stop_reason == "pause_turn":
+            # Recherche encore en cours -> on renvoie le contenu tel quel pour continuer
+            messages.append({"role": "assistant", "content": resp.content})
+            continue
 
-        # Sinon, Claude veut faire une recherche : le serveur Anthropic exécute
-        # lui-même l'outil web_search (pas besoin de le faire côté client),
-        # on renvoie simplement la conversation telle quelle pour qu'il continue.
-        messages.append({"role": "assistant", "content": resp.content})
-        messages.append({
-            "role": "user",
-            "content": [b for b in resp.content if b.type == "tool_result"]
-        })
+        text_blocks = [b.text for b in resp.content if b.type == "text"]
+        text = "\n".join(text_blocks).strip()
+        if not text:
+            raise RuntimeError(
+                f"Réponse vide de Claude (stop_reason={resp.stop_reason}). "
+                f"Contenu brut reçu : {resp.content}"
+            )
+        return text
 
-    raise RuntimeError("Trop d'allers-retours de recherche web sans réponse finale")
+    raise RuntimeError("Trop d'allers-retours (pause_turn) sans réponse finale")
 
 
 def main():
@@ -118,7 +124,14 @@ def main():
     text = run_with_web_search(client, raw)
     # Sécurité : au cas où le modèle encadrerait quand même sa réponse de ```json
     text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-    analysis = json.loads(text)
+    try:
+        analysis = json.loads(text)
+    except json.JSONDecodeError as e:
+        print("[erreur] Impossible de parser la réponse de Claude en JSON.")
+        print("--- Réponse brute reçue ---")
+        print(text)
+        print("--- Fin de la réponse brute ---")
+        raise
 
     out_path = f"data/analysis_{date_str}.json"
     with open(out_path, "w", encoding="utf-8") as f:
