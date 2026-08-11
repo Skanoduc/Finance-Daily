@@ -137,6 +137,10 @@ def fetch_ticker_block(tickers: dict, period="2y"):
             hist = yf.Ticker(symbol).history(period=period)
             if hist.empty:
                 continue
+            # Yahoo renvoie des dates "timezone-aware" (ex: Europe/Paris) ; on les
+            # repasse en "naïves" pour pouvoir les comparer à nos dates de référence
+            # (1er janvier, 1er du mois) sans erreur de type.
+            hist.index = hist.index.tz_localize(None)
             out[symbol] = {
                 "name": name,
                 "value": round(hist["Close"].iloc[-1], 2),
