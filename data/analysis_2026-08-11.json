@@ -1,0 +1,40 @@
+{
+  "headline": "Macro US stable : chômage en baisse, inflation recule légèrement",
+  "headline_sub": "Les données macroéconomiques américaines de juillet-juin 2026 confirment un atterrissage progressif, avec un marché du travail qui résiste et une désinflation qui se poursuit.",
+  "synthese": [
+    "Les données de marché du 11 août 2026 sont peu fournies en termes de cotations d'actifs — indices, devises, matières premières et actions ne remontent aucune variation ce jour — ce qui limite l'analyse aux indicateurs macroéconomiques disponibles. Ces derniers, en revanche, offrent un tableau d'ensemble cohérent sur la santé de l'économie américaine.",
+    "Sur le front de l'emploi, le taux de chômage américain ressort à 4,1 % en juillet 2026, contre 4,2 % le mois précédent. Cette légère amélioration, bien qu'en surface marginale, signale que le marché du travail ne se dégrade pas malgré le niveau restrictif des taux directeurs. C'est un signal important pour la Fed : la résistance de l'emploi réduit l'urgence d'un assouplissement monétaire précipité.",
+    "L'inflation CPI publiée pour juin 2026 affiche un indice à 332,57, en baisse par rapport aux 333,98 du mois précédent — soit une variation mensuelle négative d'environ -0,4 %. C'est une donnée encourageante pour la désinflation, mais qui devra être confirmée dans la durée. Dans ce contexte, le taux directeur de la Fed reste stable à 3,63 %, et le taux à 10 ans américain se détend légèrement à 4,65 % contre 4,69 % précédemment, suggérant que les marchés obligataires intègrent une pause durable dans le cycle de politique monétaire."
+  ],
+  "a_venir": [
+    "Dans les prochains jours, l'attention se portera sur la confirmation ou l'infirmation de la tendance désinflationniste avec les prochaines publications CPI et PPI. Le comportement du taux à 10 ans américain sera clé : une poursuite de la détente sous 4,60 % signalerait une anticipation de baisse de taux plus proche, tandis qu'une remontée rouvrirait la question de la duration sur les portefeuilles obligataires. Le niveau de chômage à 4,1 % reste dans la zone de confort de la Fed, mais tout rebond au-delà de 4,3 % changerait rapidement le ton de l'institution."
+  ],
+  "commentaire_indices_europe": "Aucune donnée de cotation n'est disponible pour les indices européens ce jour. Il n'est pas possible de commenter les performances ou les tendances sectorielles sans données chiffrées.",
+  "commentaire_indices_us": "Les indices américains ne remontent aucune variation dans les données du jour. Le contexte macro reste globalement favorable — désinflation, emploi stable — mais l'absence de chiffres empêche toute conclusion sur la direction des marchés actions.",
+  "commentaire_indices_asie": "Aucun indice asiatique n'est renseigné dans les données disponibles ce jour. La région reste sous influence des dynamiques globales de taux et de l'évolution du dollar, mais aucune performance spécifique ne peut être commentée.",
+  "commentaire_devises": "Aucune donnée de change n'est disponible ce jour. La légère détente des taux longs américains (4,65 % vs 4,69 %) pourrait théoriquement peser modérément sur le dollar, mais sans cotations réelles, cette hypothèse reste spéculative.",
+  "commentaire_matieres_premieres": "Les matières premières ne font l'objet d'aucune donnée de cotation ce jour. Dans un contexte de désinflation aux États-Unis, les prix des commodités restent un facteur à surveiller pour valider la durabilité de la baisse de l'indice des prix.",
+  "deepdives": [
+    {
+      "tag": "MACRO",
+      "title": "Taux de chômage US — 4,1 % (juillet 2026)",
+      "paragraphs": [
+        "Le taux de chômage américain recule de 4,2 % à 4,1 % entre juin et juillet 2026. Ce mouvement, bien que d'ampleur limitée, intervient dans un contexte où la Fed maintient ses taux directeurs à 3,63 %, un niveau encore restrictif. La résilience du marché du travail est à double tranchant : d'un côté elle rassure sur la solidité de la demande intérieure ; de l'autre, elle donne à la Fed une raison de différer tout assouplissement. L'histoire récente des cycles de taux montre que c'est souvent lorsque le chômage commence à remonter que la Fed accélère ses baisses — ce signal n'est pas encore là."
+      ]
+    },
+    {
+      "tag": "MACRO",
+      "title": "Inflation US CPI — indice 332,57 (juin 2026, -0,4 % mensuel)",
+      "paragraphs": [
+        "L'indice CPI passe de 333,98 à 332,57 entre mai et juin 2026, soit une variation mensuelle d'environ -0,42 %. C'est la première baisse mensuelle notable si elle se confirme dans les révisions, et elle traduit vraisemblablement un relâchement des pressions sur les biens, l'énergie, ou les deux. Dans une optique glissante annuelle, le niveau absolu reste élevé, mais la direction importe davantage pour les marchés. Si la tendance se maintient en juillet, la pression sur la Fed pour assouplir sa politique monétaire s'accentuera, même si le marché du travail solide lui laisse une marge de patience."
+      ]
+    },
+    {
+      "tag": "MACRO",
+      "title": "Taux 10 ans US — 4,65 % (vs 4,69 % précédemment)",
+      "paragraphs": [
+        "Le taux des obligations souveraines américaines à 10 ans se détend légèrement, passant de 4,69 % à 4,65 %. Ce mouvement de 4 points de base est modeste mais directionnel : il indique que les opérateurs obligataires n'anticipent pas de remontée des taux directeurs à court terme, et intègrent progressivement un scénario de stabilisation voire d'assouplissement futur. L'écart entre le taux directeur (3,63 %) et le 10 ans (4,65 %) reste positif à environ 100 points de base, ce qui normalise la courbe des taux après une période d'inversion prolongée — un signal classiquement associé à une phase de transition du cycle économique."
+      ]
+    }
+  ]
+}
