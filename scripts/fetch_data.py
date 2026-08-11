@@ -43,6 +43,16 @@ INDICES = {
         "000001.SS": "Shanghai Composite",
         "^AXJO": "ASX 200",
         "^KS11": "KOSPI",
+        "^BSESN": "Sensex (Inde)",
+        "^NSEI": "Nifty 50 (Inde)",
+    },
+    "Amériques": {
+        "^GSPTSE": "S&P/TSX (Canada)",
+        "^BVSP": "Bovespa (Brésil)",
+        "^MXX": "IPC (Mexique)",
+    },
+    "Autres": {
+        "^JALSH": "JSE All Share (Afrique du Sud)",
     },
 }
 
@@ -63,13 +73,28 @@ MATIERES_PREMIERES = {
     "HG=F": "Cuivre",
 }
 
-# Tickers surveillés pour repérer les plus fortes variations du jour
-# (grandes capitalisations US + Europe -> on peut étoffer cette liste)
+# Tickers surveillés pour repérer les plus fortes variations du jour.
+# Répartis par secteur et par zone géographique pour une couverture large.
 WATCHLIST_ACTIONS = {
+    # Tech US
     "AAPL": "Apple", "MSFT": "Microsoft", "NVDA": "Nvidia", "AMZN": "Amazon",
-    "GOOGL": "Alphabet", "META": "Meta", "TSLA": "Tesla",
+    "GOOGL": "Alphabet", "META": "Meta", "TSLA": "Tesla", "AVGO": "Broadcom",
+    "AMD": "AMD", "NFLX": "Netflix",
+    # Finance US
+    "JPM": "JPMorgan Chase", "GS": "Goldman Sachs", "BAC": "Bank of America",
+    # Santé / conso US
+    "LLY": "Eli Lilly", "UNH": "UnitedHealth", "PG": "Procter & Gamble", "KO": "Coca-Cola",
+    # Énergie / industrie US
+    "XOM": "ExxonMobil", "CAT": "Caterpillar", "BA": "Boeing",
+    # France
     "MC.PA": "LVMH", "OR.PA": "L'Oréal", "TTE.PA": "TotalEnergies",
+    "AIR.PA": "Airbus", "BNP.PA": "BNP Paribas", "SAN.PA": "Sanofi",
+    # Europe (hors France)
     "SAP.DE": "SAP", "ASML.AS": "ASML", "NESN.SW": "Nestlé",
+    "NOVN.SW": "Novartis", "SIE.DE": "Siemens", "ALV.DE": "Allianz",
+    # Asie
+    "9984.T": "SoftBank", "7203.T": "Toyota", "005930.KS": "Samsung Electronics",
+    "BABA": "Alibaba", "TCEHY": "Tencent",
 }
 
 # Séries FRED utiles pour la partie macro (clé API gratuite sur fred.stlouisfed.org)

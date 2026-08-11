@@ -62,7 +62,7 @@ def build_ticker(raw):
     return items
 
 
-def build_top_movers(raw, n=8):
+def build_top_movers(raw, n=12):
     all_assets = []
     for region in raw["indices"].values():
         all_assets.extend(region.values())
@@ -100,9 +100,15 @@ def main():
     common = dict(date_label=date_label, ticker=ticker, base_path="")
 
     # ---- Page d'accueil ----
+    # Sélection volontairement restreinte aux indices "phares" de chaque zone
+    # pour ne pas surcharger l'aperçu -> le détail complet est sur /indices.html
+    HIGHLIGHT_SYMBOLS = {"^FCHI", "^GDAXI", "^FTSE", "^GSPC", "^IXIC", "^DJI",
+                          "^N225", "^HSI", "^BSESN", "^GSPTSE", "^BVSP"}
     indices_overview = []
     for region_name, region in raw["indices"].items():
-        for d in region.values():
+        for symbol, d in region.items():
+            if symbol not in HIGHLIGHT_SYMBOLS:
+                continue
             indices_overview.append({
                 "name": d["name"], "value": d["value"],
                 "day": fmt_pct(d["day"]), "day_cls": cls_pct(d["day"]),
@@ -118,8 +124,10 @@ def main():
 
     # ---- Page Indices ----
     groups = []
+    region_keys = {"Europe": "europe", "États-Unis": "us", "Asie-Pacifique": "asie",
+                   "Amériques": "ameriques", "Autres": "autres"}
     for region_name, region in raw["indices"].items():
-        key = {"Europe": "europe", "États-Unis": "us", "Asie-Pacifique": "asie"}.get(region_name, "")
+        key = region_keys.get(region_name, "")
         comment = analysis.get(f"commentaire_indices_{key}", "")
         groups.append({"title": region_name,
                         "rows": [row_from_ticker(s, d) for s, d in region.items()],

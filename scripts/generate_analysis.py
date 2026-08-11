@@ -2,7 +2,11 @@
 generate_analysis.py
 Prend le fichier data/raw_<date>.json (chiffres bruts) et demande à Claude
 de rédiger les textes du jour : titre, synthèse, section "à surveiller demain",
-commentaires par catégorie, et deep dives sur les plus fortes variations.
+commentaires par catégorie, et deep dives sourcés sur les plus fortes variations.
+
+Claude a accès à la recherche web en direct (outil web_search de l'API) pour
+appuyer ses deep dives sur de vraies news du jour plutôt que sur de simples
+déductions à partir des chiffres. Chaque deep dive inclut ses sources.
 
 Nécessite la variable d'environnement ANTHROPIC_API_KEY.
 """
@@ -14,13 +18,22 @@ import datetime as dt
 import anthropic
 
 MODEL = "claude-sonnet-4-6"  # rapport qualité/prix adapté à une tâche quotidienne de ce type
+MAX_SEARCH_ROUNDS = 8  # limite de sécurité sur le nombre d'allers-retours avec l'outil de recherche
 
 
 SYSTEM_PROMPT = """Tu es un analyste financier senior qui rédige la synthèse quotidienne
 d'une newsletter destinée à un lecteur avancé mais non-professionnel.
 Ton style : factuel, précis, sans emphase artificielle, tu expliques le "pourquoi" derrière les chiffres.
 Tu écris en français.
-Tu réponds UNIQUEMENT en JSON valide, sans texte avant/après, sans balises markdown."""
+
+Tu as accès à un outil de recherche web : utilise-le systématiquement pour les deep dives,
+afin d'expliquer les mouvements de marché avec de vrais faits du jour (résultats d'entreprise,
+annonces, données macro, événements géopolitiques) plutôt que des suppositions. Ne te contente
+jamais des chiffres seuls pour un deep dive : cherche toujours le "pourquoi" réel, et note l'URL
+de chaque source utilisée.
+
+Une fois tes recherches terminées, ta réponse finale doit être UNIQUEMENT le JSON demandé,
+sans texte avant/après, sans balises markdown, sans commentaire sur tes recherches."""
 
 
 def build_user_prompt(raw: dict) -> str:
@@ -28,7 +41,10 @@ def build_user_prompt(raw: dict) -> str:
 
 {json.dumps(raw, ensure_ascii=False, indent=2)}
 
-Rédige la synthèse du jour. Réponds avec un objet JSON ayant EXACTEMENT cette forme :
+Rédige la synthèse du jour. Utilise la recherche web pour comprendre les vraies causes
+des mouvements les plus significatifs avant de rédiger, en particulier pour les deep dives.
+
+Ta réponse finale (après tes recherches) doit être un objet JSON ayant EXACTEMENT cette forme :
 
 {{
   "headline": "Titre court et factuel de l'actualité principale du jour (max 12 mots)",
@@ -38,20 +54,56 @@ Rédige la synthèse du jour. Réponds avec un objet JSON ayant EXACTEMENT cette
   "commentaire_indices_europe": "1-2 phrases sur les indices européens",
   "commentaire_indices_us": "1-2 phrases sur les indices américains",
   "commentaire_indices_asie": "1-2 phrases sur les indices asiatiques",
+  "commentaire_indices_ameriques": "1-2 phrases sur le Canada/Brésil/Mexique",
   "commentaire_devises": "1-2 phrases sur les devises",
   "commentaire_matieres_premieres": "1-2 phrases sur les matières premières",
   "deepdives": [
     {{
-      "tag": "ACTION | INDICE | MACRO",
+      "tag": "ACTION | INDICE | MACRO | MATIÈRE PREMIÈRE",
       "title": "Nom de l'actif + variation",
-      "paragraphs": ["Explication détaillée de pourquoi ce mouvement a eu lieu, en te basant sur les données fournies et le contexte de marché connu."]
+      "paragraphs": ["Explication détaillée et factuelle de pourquoi ce mouvement a eu lieu, basée sur tes recherches web réelles."],
+      "sources": [{{"title": "Nom de la source", "url": "https://..."}}]
     }}
   ]
 }}
 
-Choisis 2 à 4 deep dives correspondant aux plus fortes variations (positives ou négatives)
-présentes dans les données. Base-toi uniquement sur les chiffres fournis, ne prétends pas
-avoir accès à des news en temps réel que tu n'as pas — reste factuel sur les ordres de grandeur."""
+Choisis 3 à 6 deep dives correspondant aux plus fortes variations (positives ou négatives,
+tous types d'actifs confondus) présentes dans les données. Chaque deep dive doit citer au
+moins une source réelle trouvée par la recherche web. Si tu ne trouves vraiment aucune
+information fiable sur un mouvement, dis-le explicitement dans le paragraphe plutôt que
+d'inventer une explication."""
+
+
+def run_with_web_search(client, raw):
+    """Boucle d'appels à l'API en laissant Claude utiliser l'outil web_search
+    autant de fois que nécessaire, jusqu'à obtenir la réponse finale en texte."""
+    messages = [{"role": "user", "content": build_user_prompt(raw)}]
+    tools = [{"type": "web_search_20250305", "name": "web_search"}]
+
+    for _ in range(MAX_SEARCH_ROUNDS):
+        resp = client.messages.create(
+            model=MODEL,
+            max_tokens=6000,
+            system=SYSTEM_PROMPT,
+            messages=messages,
+            tools=tools,
+        )
+
+        if resp.stop_reason != "tool_use":
+            # Claude a fini ses recherches et a répondu -> on récupère le texte
+            text_blocks = [b.text for b in resp.content if b.type == "text"]
+            return "\n".join(text_blocks).strip()
+
+        # Sinon, Claude veut faire une recherche : le serveur Anthropic exécute
+        # lui-même l'outil web_search (pas besoin de le faire côté client),
+        # on renvoie simplement la conversation telle quelle pour qu'il continue.
+        messages.append({"role": "assistant", "content": resp.content})
+        messages.append({
+            "role": "user",
+            "content": [b for b in resp.content if b.type == "tool_result"]
+        })
+
+    raise RuntimeError("Trop d'allers-retours de recherche web sans réponse finale")
 
 
 def main():
@@ -63,14 +115,7 @@ def main():
 
     client = anthropic.Anthropic()  # lit ANTHROPIC_API_KEY depuis l'environnement
 
-    resp = client.messages.create(
-        model=MODEL,
-        max_tokens=4000,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": build_user_prompt(raw)}],
-    )
-
-    text = resp.content[0].text.strip()
+    text = run_with_web_search(client, raw)
     # Sécurité : au cas où le modèle encadrerait quand même sa réponse de ```json
     text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
     analysis = json.loads(text)
