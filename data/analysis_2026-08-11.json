@@ -1,39 +1,149 @@
 {
-  "headline": "Macro US stable : chômage en baisse, inflation recule légèrement",
-  "headline_sub": "Les données macroéconomiques américaines de juillet-juin 2026 confirment un atterrissage progressif, avec un marché du travail qui résiste et une désinflation qui se poursuit.",
+  "headline": "Le pétrole rebondit de 10% : l'impasse sur Ormuz dure",
+  "headline_sub": "Les marchés digèrent la résurgence du risque géopolitique au Moyen-Orient, pendant que Alphabet paye le prix de sa fuite des talents en IA.",
   "synthese": [
-    "Les données de marché du 11 août 2026 sont peu fournies en termes de cotations d'actifs — indices, devises, matières premières et actions ne remontent aucune variation ce jour — ce qui limite l'analyse aux indicateurs macroéconomiques disponibles. Ces derniers, en revanche, offrent un tableau d'ensemble cohérent sur la santé de l'économie américaine.",
-    "Sur le front de l'emploi, le taux de chômage américain ressort à 4,1 % en juillet 2026, contre 4,2 % le mois précédent. Cette légère amélioration, bien qu'en surface marginale, signale que le marché du travail ne se dégrade pas malgré le niveau restrictif des taux directeurs. C'est un signal important pour la Fed : la résistance de l'emploi réduit l'urgence d'un assouplissement monétaire précipité.",
-    "L'inflation CPI publiée pour juin 2026 affiche un indice à 332,57, en baisse par rapport aux 333,98 du mois précédent — soit une variation mensuelle négative d'environ -0,4 %. C'est une donnée encourageante pour la désinflation, mais qui devra être confirmée dans la durée. Dans ce contexte, le taux directeur de la Fed reste stable à 3,63 %, et le taux à 10 ans américain se détend légèrement à 4,65 % contre 4,69 % précédemment, suggérant que les marchés obligataires intègrent une pause durable dans le cycle de politique monétaire."
+    "La semaine du 11 août 2026 est dominée par le retour en force de la prime géopolitique sur les marchés pétroliers. Le WTI gagne près de 10% sur la semaine pour s'établir à 83 $/baril, et le Brent touche 88,70 $, leur troisième séance consécutive de hausse. Le catalyseur est clair : les Gardiens de la Révolution iraniens ont réaffirmé dimanche que le détroit d'Ormuz resterait fermé tant que Washington n'accepterait pas \"toutes\" les conditions de Téhéran, effaçant les espoirs nés la semaine précédente d'un accord via Oman. Ce passage stratégique, par lequel transitait avant la guerre environ 20% des exportations mondiales de brut, reste verrouillé, et selon JPMorgan, chaque mois supplémentaire de disruption pourrait ajouter 7 à 8 dollars au Brent. Cette tension énergétique se répercute directement sur l'or, qui s'envole de près de 8% sur la semaine à 4 422 $/oz, combinant prime de risque géopolitique, anticipations de baisses de taux de la Fed après un rapport sur l'emploi américain de juillet catastrophique (-23 000 emplois contre +80 000 attendus), et achats structurels des banques centrales.",
+    "Sur les marchés actions, la divergence est marquée entre zones géographiques et secteurs. Le Nikkei 225 surperforme nettement avec +2,08% en séance et +5,04% sur la semaine, porté par le rebond des semi-conducteurs (Advantest, Tokyo Electron) après la baisse des taux longs américains et la montée du Philadelphia Semiconductor Index. La séance du 10 août a vu l'indice reprendre 1 363 points en une seule journée pour clôturer à 66 970 — notons que le marché japonais était fermé ce 11 août pour le jour férié de la Montagne. En Europe, le tableau est contrasté : l'Euro Stoxx 50 (+0,24%) et le DAX (+0,26%) tiennent bien, soutenus notamment par ASML qui gagne +2,66% en séance dans la foulée des révisions haussières d'analystes et de son adjonction à la liste de conviction de Goldman Sachs. Le CAC 40 recule légèrement (-0,13%), pénalisé par LVMH (-0,76%), L'Oréal (-1,24%) et Airbus (-1,0%). Aux États-Unis, la tech pèse sur les indices : le Nasdaq cède -0,82% et le S&P 500 -0,41%, sous la pression de la poursuite du sell-off post-résultats d'Alphabet (-3,22% aujourd'hui, -8,38% sur la semaine) et d'Amazon (-2,23%).",
+    "Le Bovespa brésilien reste la grande blessure de la semaine avec -2,61% en séance et -5,74% hebdomadaire. La correction reflète une accumulation de facteurs : déficit fiscal brésilien proche de 10% du PIB qui maintient une prime de risque élevée sur tous les actifs locaux, pression sur les marges des grandes banques (Itaú et Bradesco chacun -0,8%) après la baisse unanime du Selic à 14%, et selloff post-résultats de Petrobras dont les actionnaires ont encaissé leurs gains malgré un profit Q2 en hausse de 97%. Les flux liés au rapport emploi américain défaillant ont également redirigé des capitaux vers les actions technologiques US au détriment des marchés émergents. Le peso mexicain et l'IPC mexicain cèdent eux aussi (-1,0%), dans un mouvement de risque global sur les marchés émergents d'Amérique latine."
   ],
   "a_venir": [
-    "Dans les prochains jours, l'attention se portera sur la confirmation ou l'infirmation de la tendance désinflationniste avec les prochaines publications CPI et PPI. Le comportement du taux à 10 ans américain sera clé : une poursuite de la détente sous 4,60 % signalerait une anticipation de baisse de taux plus proche, tandis qu'une remontée rouvrirait la question de la duration sur les portefeuilles obligataires. Le niveau de chômage à 4,1 % reste dans la zone de confort de la Fed, mais tout rebond au-delà de 4,3 % changerait rapidement le ton de l'institution."
+    "Plusieurs catalyseurs majeurs sont à surveiller dans les prochains jours. En premier lieu, la publication du CPI américain de juillet (prévu mercredi 12 août) est cruciale : après un emploi très faible, un chiffre d'inflation plus élevé que prévu pourrait compliquer la trajectoire de la Fed et peser sur l'or et les obligations. La réunion de la Fed de septembre sera de facto mise sous pression. En parallèle, l'évolution des négociations US-Iran sur le détroit d'Ormuz reste le facteur n°1 du marché pétrolier : toute avancée diplomatique déclencherait un fort repli du WTI, tandis qu'un durcissement supplémentaire ferait grimper le Brent bien au-delà des 90 $. Du côté des résultats d'entreprises, CoreWeave, Supermicro et Applied Materials publient dans les jours à venir — des chiffres qui pourraient déterminer si le Nasdaq retrouve sa trajectoire haussière ou reste en mode consolidation. Côté brésilien, les minutes du Copom et l'IPCA-15 sont attendus pour calibrer les anticipations de taux. Enfin, au Japon, la réouverture des marchés après le jour férié ajoutera une séance de rattrapage — à surveiller notamment sur les semi-conducteurs."
   ],
-  "commentaire_indices_europe": "Aucune donnée de cotation n'est disponible pour les indices européens ce jour. Il n'est pas possible de commenter les performances ou les tendances sectorielles sans données chiffrées.",
-  "commentaire_indices_us": "Les indices américains ne remontent aucune variation dans les données du jour. Le contexte macro reste globalement favorable — désinflation, emploi stable — mais l'absence de chiffres empêche toute conclusion sur la direction des marchés actions.",
-  "commentaire_indices_asie": "Aucun indice asiatique n'est renseigné dans les données disponibles ce jour. La région reste sous influence des dynamiques globales de taux et de l'évolution du dollar, mais aucune performance spécifique ne peut être commentée.",
-  "commentaire_devises": "Aucune donnée de change n'est disponible ce jour. La légère détente des taux longs américains (4,65 % vs 4,69 %) pourrait théoriquement peser modérément sur le dollar, mais sans cotations réelles, cette hypothèse reste spéculative.",
-  "commentaire_matieres_premieres": "Les matières premières ne font l'objet d'aucune donnée de cotation ce jour. Dans un contexte de désinflation aux États-Unis, les prix des commodités restent un facteur à surveiller pour valider la durabilité de la baisse de l'indice des prix.",
+  "commentaire_indices_europe": "L'Europe affiche une bonne résistance hebdomadaire, avec l'Euro Stoxx 50 à +0,99% et le DAX à +0,72%, portés par les valeurs industrielles et les équipementiers semi-conducteurs (ASML). Le FTSE 100 fait figure d'exception négative (-0,32% sur la semaine), pénalisé par la vigueur de la livre sterling.",
+  "commentaire_indices_us": "Wall Street subit les séquelles du sell-off sur la tech : le Nasdaq cède -0,82% en séance et -0,74% sur la semaine, sous l'effet d'Alphabet, Amazon et Apple. Le Russell 2000 (+0,51%) joue les contre-tendances, bénéficiant de la rotation vers les small caps dans un contexte de baisse des taux longs.",
+  "commentaire_indices_asie": "Le Nikkei est la grande star de la semaine (+5,04%), surfant sur la détente des taux américains et le rebond mondial des semi-conducteurs, bien qu'il soit fermé ce 11 août. Le KOSPI sud-coréen confirme son statut de meilleur indice mondial YTD (+46%), tandis que le Hang Seng gagne +1,05% dans une semaine toutefois légèrement négative pour Hong Kong.",
+  "commentaire_indices_ameriques": "Le Bovespa brésilien est le grand perdant de la semaine (-5,74%), victime du cocktail taux élevés + risque fiscal + flux émergents défavorables. Le TSX canadien résiste bien (+1,89% hebdomadaire), soutenu par la hausse du pétrole et des matières premières, tandis que le Mexique souffre modestement (-1,58%) dans le sillage régional.",
+  "commentaire_devises": "Le dollar se renforce face au yen (USD/JPY +0,89% à 159,30), la devise japonaise pâtissant paradoxalement d'un risque géopolitique mondial qui avantage le billet vert. L'EUR/USD cède légèrement (-0,14%) à 1,15, tandis que le yuan s'apprécie face au dollar (USD/CNY -0,20% à 6,73), reflétant un rebond de la demande chinoise de matières premières.",
+  "commentaire_matieres_premieres": "L'or (+1,4% en séance, +7,99% sur la semaine) à 4 422 $/oz cumule tous les facteurs favorables : emploi US très décevant, géopolitique tendue, achats des banques centrales et recul partiel des attentes de hausse de la Fed. Le WTI (+9,56% hebdomadaire) est l'autre grand mouvement de la semaine, dopé exclusivement par l'impasse sur le détroit d'Ormuz ; le cuivre (+0,4%) reste lui aussi bien orienté dans un contexte de demande industrielle soutenue.",
   "deepdives": [
     {
-      "tag": "MACRO",
-      "title": "Taux de chômage US — 4,1 % (juillet 2026)",
+      "tag": "MATIÈRE PREMIÈRE",
+      "title": "Pétrole WTI : +9,56% sur la semaine, Brent à 88,70 $",
       "paragraphs": [
-        "Le taux de chômage américain recule de 4,2 % à 4,1 % entre juin et juillet 2026. Ce mouvement, bien que d'ampleur limitée, intervient dans un contexte où la Fed maintient ses taux directeurs à 3,63 %, un niveau encore restrictif. La résilience du marché du travail est à double tranchant : d'un côté elle rassure sur la solidité de la demande intérieure ; de l'autre, elle donne à la Fed une raison de différer tout assouplissement. L'histoire récente des cycles de taux montre que c'est souvent lorsque le chômage commence à remonter que la Fed accélère ses baisses — ce signal n'est pas encore là."
+        "La flambée du brut cette semaine s'explique intégralement par l'impasse autour du détroit d'Ormuz. Ce passage stratégique par lequel transitait avant la guerre environ un cinquième des exportations mondiales de pétrole est resté fermé après la reprise des hostilités entre les États-Unis et l'Iran en juillet. La semaine précédente, le pétrole avait chuté de plus de 7% sur des espoirs d'un accord négocié via Oman. Ces espoirs se sont évaporés quand, dimanche 9 août, les Gardiens de la Révolution iraniens ont déclaré que le détroit resterait verrouillé tant que Washington n'accepterait pas 'toutes' les conditions posées par Téhéran. Le lundi 10 août, le WTI a bondi de plus de 6% en une seule séance pour effacer les pertes de la semaine précédente, et la hausse s'est prolongée mardi. L'Iran a par ailleurs restructuré son état-major militaire avec six nouvelles nominations, dont l'ancien commandant des IRGC Mohsen Rezaee au poste de secrétaire du Conseil suprême de sécurité nationale — un signal que Téhéran durcit sa posture de négociation. JPMorgan a estimé que chaque mois supplémentaire de disruption du détroit pourrait ajouter 7 à 8 dollars au Brent. En toile de fond, le rapport sur l'emploi américain du vendredi 7 août (-23 000 emplois contre +80 000 attendus) avait initialement fait baisser le brut, en réduisant les perspectives de demande, mais l'escalade géopolitique a rapidement pris le dessus. L'opérateur de référence : le détroit d'Ormuz reste la variable clé — toute avancée diplomatique provoquerait un repli immédiat et violent du WTI."
+      ],
+      "sources": [
+        {
+          "title": "FXStreet : WTI Oil hits fresh highs at $83.50 as Hormuz reopening hopes vanish",
+          "url": "https://www.fxstreet.com/news/wti-oil-hits-fresh-highs-at-8350-as-hormuz-reopening-hopes-vanish-202608110944"
+        },
+        {
+          "title": "L'Économiste Maghrébin : Le Brent bondit de 5% à près de 88 dollars",
+          "url": "https://www.leconomistemaghrebin.com/2026/08/11/petrole-le-brent-bondit-de-5-a-pres-de-88-dollars/"
+        },
+        {
+          "title": "Invezz : Oil jumps as Iran hardens Hormuz terms",
+          "url": "https://invezz.com/news/2026/08/10/oil-jumps-as-iran-hardens-hormuz-terms-is-the-crude-sell-off-now-a-bull-trap/"
+        },
+        {
+          "title": "Prix du baril : actualité du 10 août 2026",
+          "url": "https://prixdubaril.com/"
+        }
       ]
     },
     {
-      "tag": "MACRO",
-      "title": "Inflation US CPI — indice 332,57 (juin 2026, -0,4 % mensuel)",
+      "tag": "ACTION",
+      "title": "Alphabet (GOOGL) : -3,22% aujourd'hui, -8,38% sur la semaine",
       "paragraphs": [
-        "L'indice CPI passe de 333,98 à 332,57 entre mai et juin 2026, soit une variation mensuelle d'environ -0,42 %. C'est la première baisse mensuelle notable si elle se confirme dans les révisions, et elle traduit vraisemblablement un relâchement des pressions sur les biens, l'énergie, ou les deux. Dans une optique glissante annuelle, le niveau absolu reste élevé, mais la direction importe davantage pour les marchés. Si la tendance se maintient en juillet, la pression sur la Fed pour assouplir sa politique monétaire s'accentuera, même si le marché du travail solide lui laisse une marge de patience."
+        "La semaine cauchemardesque d'Alphabet s'explique par une double détonation survenue simultanément dans un contexte déjà fragilisé. Premièrement, lors de la publication des résultats T2 le 23 juillet, Alphabet avait annoncé un chiffre d'affaires de 119,8 milliards de dollars (+23% sur un an) avec un BPA de 9,11$ — soit un triple des attentes des analystes. Mais les investisseurs ont été choqués par le relèvement des prévisions de capex pour 2026 entre 195 et 205 milliards de dollars, et par le fait que la société soit passée en flux de trésorerie libre négatif pour la première fois de son histoire, ses dépenses d'infrastructure IA dépassant ses flux opérationnels. Deuxièmement, le mercredi 5 août, Alphabet a annoncé une restructuration majeure de son équipe IA : Jeff Dean, 30e employé de Google et architecte de sa stratégie IA depuis 27 ans, quitte l'entreprise pour fonder Discovery Loop, une startup d'IA scientifique, accompagné de trois autres chercheurs éminents dont Sanjay Ghemawat et Oriol Vinyals. Dans la même annonce, Demis Hassabis se retirait de la direction opérationnelle quotidienne de Google DeepMind pour devenir président de l'unité. Ces départs de figures fondatrices de l'IA de Google — intervenus dans un contexte de concurrence frontale avec OpenAI et Anthropic — ont effacé temporairement près de 190 milliards de dollars de capitalisation boursière. Ce 11 août, les doutes sur la cohérence stratégique d'Alphabet à l'heure de l'AGI continuent de peser, malgré un Morgan Stanley ayant rassuré en début de semaine sur les perspectives long terme de l'entreprise."
+      ],
+      "sources": [
+        {
+          "title": "CNBC : Google's AI reshuffle – Chief scientist Jeff Dean exits",
+          "url": "https://www.cnbc.com/2026/08/05/google-chief-scientist-jeff-dean-leaving-company-after-27-years.html"
+        },
+        {
+          "title": "Yahoo Finance : Alphabet shares fall 5% as AI pioneer Jeff Dean exits",
+          "url": "https://finance.yahoo.com/technology/ai/articles/alphabet-shares-fall-5-ai-164713908.html"
+        },
+        {
+          "title": "Yahoo Finance : Alphabet shares fall – $205 billion AI spending plan",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-shares-fall-google-unveils-123214920.html"
+        }
       ]
     },
     {
-      "tag": "MACRO",
-      "title": "Taux 10 ans US — 4,65 % (vs 4,69 % précédemment)",
+      "tag": "MATIÈRE PREMIÈRE",
+      "title": "Or (Gold) : +1,4% en séance, +7,99% sur la semaine à 4 422 $/oz",
       "paragraphs": [
-        "Le taux des obligations souveraines américaines à 10 ans se détend légèrement, passant de 4,69 % à 4,65 %. Ce mouvement de 4 points de base est modeste mais directionnel : il indique que les opérateurs obligataires n'anticipent pas de remontée des taux directeurs à court terme, et intègrent progressivement un scénario de stabilisation voire d'assouplissement futur. L'écart entre le taux directeur (3,63 %) et le 10 ans (4,65 %) reste positif à environ 100 points de base, ce qui normalise la courbe des taux après une période d'inversion prolongée — un signal classiquement associé à une phase de transition du cycle économique."
+        "L'or enchaîne l'une de ses meilleures semaines de l'été 2026, porté par une conjonction de facteurs rarement aussi favorables simultanément. Le premier est macroéconomique : le rapport sur l'emploi américain du 7 août a révélé une perte de 23 000 emplois en juillet, là où les économistes anticipaient un gain de 80 000 postes. Ce chiffre catastrophique a immédiatement réduit les probabilités d'une hausse de taux de la Fed en septembre et renforcé l'anticipation d'un pivot accommodant — or qui ne rapporte pas d'intérêt bénéficie directement d'une baisse de son coût d'opportunité. Le deuxième facteur est géopolitique : l'escalade persistante au Moyen-Orient et l'incertitude sur le détroit d'Ormuz alimentent la demande de valeurs refuges. Le troisième est structurel : les banques centrales mondiales ont acheté un net de 244 tonnes au T1 2026, et selon le World Gold Council, un record de 45% d'entre elles envisagent d'augmenter leurs avoirs. Contextualisons la performance : l'or avait atteint un sommet historique proche de 5 600 $/oz en janvier 2026, avant de corriger de près de 30% jusqu'à début août. Le rebond de cette semaine (de ~4 100 à 4 422 $) représente donc une reprise depuis les bas de cette correction, dans un environnement où la tension entre risque de hausse de taux (pro-dollar, anti-or) et géopolitique (pro-or) reste le facteur déterminant des prochaines semaines."
+      ],
+      "sources": [
+        {
+          "title": "TheStreet : Gold price today – August 7, 2026",
+          "url": "https://www.thestreet.com/crypto/investing/gold-price-today-august-7-2026"
+        },
+        {
+          "title": "Yahoo Finance : Gold prices today – August 7, 2026",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/gold-prices-today-friday-august-7-2026-gold-prices-continue-to-rise-even-after-july-jobs-report-misses-122102132.html"
+        },
+        {
+          "title": "Golden Ark Reserve : Gold Market Analysis Early August 2026",
+          "url": "https://goldenarkreserve.com/blog/gold-market-analysis-early-august-2026-price-policy-demand/"
+        }
+      ]
+    },
+    {
+      "tag": "INDICE",
+      "title": "Nikkei 225 : +2,08% lundi 10 août, +5,04% sur la semaine à 66 970 pts",
+      "paragraphs": [
+        "La performance du Nikkei cette semaine s'inscrit dans une dynamique bien identifiable : le lundi 10 août, l'indice a bondi de 1 363 points pour clôturer à 66 970, son plus haut depuis près de quatre semaines, poussé par deux moteurs distincts. D'une part, le rapport d'emploi américain décevant (perte de 23 000 emplois en juillet) a provoqué une détente des taux longs américains — le 10 ans US est passé de 4,69% à 4,65% — réduisant mécaniquement les anticipations de hausse de la Fed en septembre. Or, un cycle de hausse de taux américains serait baissier pour les actions technologiques mondiales, dont les valeurs japonaises de semi-conducteurs dépendent structurellement. D'autre part, le rebond du Philadelphia Semiconductor Index à Wall Street vendredi a servi de relais : Advantest et Tokyo Electron ont mené la hausse, contribuant à eux seuls environ 600 des 1 363 points gagnés, auxquels s'est ajouté Recruit Holdings (+limit up) après révision haussière de ses prévisions. Le contexte de fond reste celui d'un marché japonais en année exceptionnelle (+29% YTD), porté depuis le début 2026 par la victoire électorale de Sanae Takaichi (supermajorité LDP, programme de 'sécurité économique' avec 3,4% du PIB investi dans les semi-conducteurs et le quantique), le boom IA mondial dont le Japon est fournisseur clé d'équipements, et un yen affaibli (USD/JPY à 159,30) qui soutient la compétitivité des exportateurs. Note : le marché de Tokyo était fermé ce 11 août pour le jour férié national de la Montagne, le 'Mountain Day'."
+      ],
+      "sources": [
+        {
+          "title": "BigGo Finance : Nikkei 225 Surges Over 1 300 Points, Reclaiming 67 000 Mark",
+          "url": "https://finance.biggo.com/news/de8bd905-f5a7-46c6-8b5f-ebd9e201b61f"
+        },
+        {
+          "title": "MarketScreener : Japan's Nikkei posts highest close in nearly four weeks on AI rally",
+          "url": "https://www.marketscreener.com/news/japan-s-nikkei-posts-highest-close-in-nearly-four-weeks-on-ai-rally-ce7f50d3de88ff27"
+        },
+        {
+          "title": "Cyriljarnias.fr : Nikkei 225 en 2026 – résistance et rotation sectorielle",
+          "url": "https://www.cyriljarnias.fr/nikkei-225-resistance-correction-technologique-2026/"
+        }
+      ]
+    },
+    {
+      "tag": "ACTION",
+      "title": "AMD : -9,02% sur la semaine à 471,82 $ — la punition de la perfection attendue",
+      "paragraphs": [
+        "AMD illustre cette semaine un phénomène récurrent sur les valeurs d'IA à forte valorisation : le 'sell the news' malgré un double beat. Le 4 août après clôture, la société a publié un chiffre d'affaires T2 de 11,54 milliards de dollars (+50% sur un an, au-dessus des 11,3 milliards estimés), un BPA ajusté de 1,66$ (vs 1,62$ attendu), et une guidance T3 à 13 milliards de dollars (vs 12,5 milliards attendus). En théorie, un triple dépassement devrait récompenser l'actionnaire. En pratique, AMD avait déjà grimpé de ~140% depuis le début de l'année et d'encore 7% le jour même de la publication — le titre était 'pricé pour le blowout', selon l'expression d'un stratège de marché cité par Yahoo Finance. Deux points techniques ont cristallisé la déception : premièrement, la marge brute est ressortie à 54%, en dessous du consensus à 56%, pénalisée par les coûts de démarrage de l'infrastructure AI 'Helios'. Deuxièmement, la transparence insuffisante sur la décomposition des revenus Data Center entre les GPU Instinct (IA) et les CPU EPYC (serveurs) a alimenté le doute sur la réelle traction des GPU face à Nvidia. Par ailleurs, la PDG Lisa Su avait vendu plus de 200 000 actions avant la publication, un signal qui a pesé sur le sentiment. Le titre a cédé 8,8% en after-hours le 4 août, soit l'essentiel de la perte hebdomadaire. À noter toutefois qu'AMD a annoncé l'acquisition de Taalas, une startup torontoise spécialisée dans les puces d'inférence IA — un signal de stratégie long terme positif qui n'a pas suffi à enrayer la correction à court terme."
+      ],
+      "sources": [
+        {
+          "title": "Yahoo Finance : 'This was not an exceptional result' – Why AMD stock tanked after earnings",
+          "url": "https://finance.yahoo.com/markets/article/this-was-not-an-exceptional-result-why-amd-stock-tanked-5-after-earnings-112124288.html"
+        },
+        {
+          "title": "IndMoney : AMD Q2 2026 Earnings – Why AMD stock fell after earnings beat",
+          "url": "https://www.indmoney.com/blog/us-stocks/amd-stock-crashes-q2-earnings-analysis"
+        },
+        {
+          "title": "Stocks Down Under : AMD Just Fell 8% After Record Earnings",
+          "url": "https://stocksdownunder.com/amd-earnings-drop-nvidia-micron-sandisk/"
+        }
+      ]
+    },
+    {
+      "tag": "INDICE",
+      "title": "Bovespa (Brésil) : -2,61% en séance, -5,74% sur la semaine à 167 683 pts",
+      "paragraphs": [
+        "Le Bovespa enregistre sa pire semaine depuis mai 2026 sous l'effet d'une accumulation de chocs spécifiques et structurels. La semaine a été marquée par la déception post-Petrobras : malgré un profit T2 en quasi-doublement à 52,4 milliards de reais (+97% sur un an), la société n'a pas annoncé de dividende exceptionnel au-delà du plan déjà communiqué de 17,4 milliards de reais, ce qui a provoqué une prise de bénéfices massive chez les investisseurs positionnés à l'achat avant les résultats. Plus profondément, le marché brésilien souffre d'un environnement structurel défavorable : le déficit fiscal frôle 10% du PIB, maintenant une prime de risque élevée sur tous les actifs libellés en reais. Le Selic a certes été abaissé à 14% lors du Copom unanime du 5 août, mais cette baisse a pesé sur les marges des grandes banques (Itaú et Bradesco, poids lourds de l'indice, chacun -0,8%), créant un effet de ciseau entre la satisfaction de l'emprunteur et la compression des revenus bancaires. Ce 11 août, la journée commence avec la publication des minutes du Copom et de l'IPCA-15, deux catalyseurs potentiels. La Selic à 14% reste extrêmement restrictive et le débat sur la trajectoire de taux en 2026 est le principal driver de l'indice. Enfin, le mauvais rapport emploi américain a paradoxalement nui aux émergents en redirigeant des flux vers la tech US, accentuant la pression vendeuse sur le Bovespa déjà fragilisé par les facteurs domestiques."
+      ],
+      "sources": [
+        {
+          "title": "Rio Times Online : Brazil Stocks Post Worst Week Since May as Petrobras Slides",
+          "url": "https://www.riotimesonline.com/brazil-markets-ibovespa-the-real-august-8-2026/"
+        },
+        {
+          "title": "Rio Times Online : Brazil Markets – Ibovespa & the Real, August 11 2026",
+          "url": "https://www.riotimesonline.com/brazil-markets-ibovespa-real-tuesday-august-11-2026/"
+        },
+        {
+          "title": "Rio Times Online : Brazil's Financial Morning Call for Tuesday August 11 2026",
+          "url": "https://www.riotimesonline.com/brazils-financial-morning-call-for-tuesday-august-11-2026/"
+        }
       ]
     }
   ]
