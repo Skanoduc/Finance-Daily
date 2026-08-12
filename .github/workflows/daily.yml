@@ -4,9 +4,11 @@ on:
   # Déclenchement automatique DÉSACTIVÉ temporairement (pendant qu'on ajuste
   # les coûts/le contenu) -> décommente les 2 lignes "cron" ci-dessous pour
   # réactiver l'exécution quotidienne automatique.
+  # Horaire choisi : 7h30 heure de Paris (Europe/US fermés, Asie fermée aussi
+  # -> récap complet de la veille prêt avant le début de la journée).
   # schedule:
-  #   - cron: "45 16 * * 1-5"   # heure d'été (avril-octobre environ)
-  #   - cron: "45 17 * * 1-5"   # heure d'hiver
+  #   - cron: "30 5 * * 1-5"   # 7h30 Paris en heure d'été (CEST, UTC+2)
+  #   - cron: "30 6 * * 1-5"   # 7h30 Paris en heure d'hiver (CET, UTC+1)
   workflow_dispatch: {}        # permet toujours de lancer le rapport manuellement depuis GitHub
 
 # Empêche deux exécutions de tourner en même temps (évite les collisions de push
