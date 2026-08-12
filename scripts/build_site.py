@@ -126,6 +126,7 @@ def main():
     os.makedirs(DOCS, exist_ok=True)
     os.makedirs(os.path.join(DOCS, "static"), exist_ok=True)
     shutil.copy(os.path.join(STATIC, "style.css"), os.path.join(DOCS, "static", "style.css"))
+    shutil.copy(os.path.join(STATIC, "asset-modal.js"), os.path.join(DOCS, "static", "asset-modal.js"))
 
     date_label = fmt_date_fr(date_str)
     ticker = build_ticker(raw)
