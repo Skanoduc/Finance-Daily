@@ -168,9 +168,13 @@ def fetch_ticker_block(tickers: dict, period="2y"):
                 "mtd": variation_depuis(hist, month_start),
                 "ytd": variation_depuis(hist, ytd_start),
                 "y1": pct_change(hist, 252),
-                # 20 dernières clôtures, pour dessiner un petit graphique (sparkline)
-                # sur le site -> liste de nombres simples, la plus ancienne en premier.
+                # 20 dernières clôtures pour la petite sparkline dans le tableau
                 "sparkline": [round(v, 2) for v in hist["Close"].tail(20).tolist()],
+                # ~90 dernières séances pour le graphique agrandi (fenêtre modale)
+                "history": [
+                    {"d": idx.strftime("%Y-%m-%d"), "v": round(v, 2)}
+                    for idx, v in hist["Close"].tail(90).items()
+                ],
             }
         except Exception as e:
             print(f"[warn] échec récupération {symbol} ({name}) : {e}")

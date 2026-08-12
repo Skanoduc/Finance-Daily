@@ -13,6 +13,7 @@ import shutil
 import datetime as dt
 from jinja2 import Environment, FileSystemLoader
 from config import FEATURES
+from glossary import get_description
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = os.path.join(ROOT, "templates")
@@ -61,8 +62,9 @@ def sparkline_svg(values, positive):
             f'stroke="{color}" stroke-width="1.5" /></svg>')
 
 
-def row_from_ticker(symbol, d):
+def row_from_ticker(symbol, d, category="action", asset_data=None):
     row = {
+        "symbol": symbol,
         "name": d["name"], "value": d["value"],
         "day": fmt_pct(d["day"]), "day_cls": cls_pct(d["day"]),
         "week": fmt_pct(d["week"]), "week_cls": cls_pct(d["week"]),
@@ -72,6 +74,14 @@ def row_from_ticker(symbol, d):
     }
     if FEATURES["sparklines"]:
         row["sparkline"] = sparkline_svg(d.get("sparkline", []), (d["day"] or 0) >= 0)
+    # Alimente le dictionnaire de données pour la fenêtre modale de la page
+    # (description + historique complet pour le graphique agrandi)
+    if asset_data is not None:
+        asset_data[symbol] = {
+            "name": d["name"],
+            "description": get_description(symbol, d["name"], category),
+            "history": d.get("history", []),
+        }
     return row
 
 
@@ -145,6 +155,7 @@ def main():
            top_movers=build_top_movers(raw), **common)
 
     # ---- Page Indices ----
+    asset_data = {}
     groups = []
     region_keys = {"Europe": "europe", "États-Unis": "us", "Asie-Pacifique": "asie",
                    "Amériques": "ameriques", "Autres": "autres"}
@@ -152,24 +163,25 @@ def main():
         key = region_keys.get(region_name, "")
         comment = analysis.get(f"commentaire_indices_{key}", "")
         groups.append({"title": region_name,
-                        "rows": [row_from_ticker(s, d) for s, d in region.items()],
+                        "rows": [row_from_ticker(s, d, "indice", asset_data) for s, d in region.items()],
                         "commentaire": comment})
     render("category.html", "indices.html", active="indices",
            page_title="Indices boursiers", page_headline="Indices — toutes zones",
            page_lede="Clôtures du jour et variations sur plusieurs horizons.",
-           groups=groups, **common)
+           groups=groups, asset_data_json=json.dumps(asset_data, ensure_ascii=False), **common)
 
     # ---- Page Devises & Matières premières ----
+    asset_data = {}
     groups = [
-        {"title": "Devises", "rows": [row_from_ticker(s, d) for s, d in raw["devises"].items()],
+        {"title": "Devises", "rows": [row_from_ticker(s, d, "devise", asset_data) for s, d in raw["devises"].items()],
          "commentaire": analysis.get("commentaire_devises", "")},
-        {"title": "Matières premières", "rows": [row_from_ticker(s, d) for s, d in raw["matieres_premieres"].items()],
+        {"title": "Matières premières", "rows": [row_from_ticker(s, d, "matiere_premiere", asset_data) for s, d in raw["matieres_premieres"].items()],
          "commentaire": analysis.get("commentaire_matieres_premieres", "")},
     ]
     render("category.html", "devises-matieres.html", active="devises",
            page_title="Devises & Matières premières", page_headline="Devises & Matières premières",
            page_lede="Principales paires de change et matières premières suivies.",
-           groups=groups, **common)
+           groups=groups, asset_data_json=json.dumps(asset_data, ensure_ascii=False), **common)
 
     # ---- Page Macro ----
     macro_rows = []
@@ -185,12 +197,13 @@ def main():
 
     # ---- Page ETFs ----
     if FEATURES["etfs"] and raw.get("etfs"):
-        groups = [{"title": cat, "rows": [row_from_ticker(s, d) for s, d in tickers.items()], "commentaire": ""}
+        asset_data = {}
+        groups = [{"title": cat, "rows": [row_from_ticker(s, d, "etf", asset_data) for s, d in tickers.items()], "commentaire": ""}
                   for cat, tickers in raw["etfs"].items()]
         render("category.html", "etfs.html", active="etfs",
                page_title="ETFs", page_headline="ETFs (trackers)",
                page_lede="Principaux trackers actions, secteurs, matières premières et marchés émergents.",
-               groups=groups, **common)
+               groups=groups, asset_data_json=json.dumps(asset_data, ensure_ascii=False), **common)
 
     # ---- Page Deep dives ----
     render("deepdive.html", "deep-dives.html", active="deepdive",

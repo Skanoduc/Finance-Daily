@@ -40,6 +40,24 @@
 {% block content %}{% endblock %}
 </main>
 
+<!-- Fenêtre modale actif (description + graphique agrandi) -->
+<div id="asset-modal-overlay">
+  <div class="asset-modal">
+    <button class="asset-modal-close" id="asset-modal-close" aria-label="Fermer">&times;</button>
+    <h3 id="asset-modal-title"></h3>
+    <p class="desc" id="asset-modal-desc"></p>
+    <div class="asset-modal-chart-wrap">
+      <div id="asset-modal-chart"></div>
+      <div class="asset-modal-tooltip" id="asset-modal-tooltip"></div>
+    </div>
+  </div>
+</div>
+
+{% if asset_data_json %}
+<script>window.ASSET_DATA = {{ asset_data_json | safe }};</script>
+{% endif %}
+<script src="{{ base_path }}static/asset-modal.js"></script>
+
 <footer class="site">
   Finance Daily — généré automatiquement le {{ date_label }} · Données : Yahoo Finance, FRED, ECB · À des fins d'information uniquement, ne constitue pas un conseil en investissement.
 </footer>

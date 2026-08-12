@@ -25,7 +25,7 @@
   </thead>
   <tbody>
   {% for row in grp.rows %}
-  <tr>
+  <tr data-asset-symbol="{{ row.symbol }}">
     <td>{{ row.name }}</td>
     {% if row.sparkline is defined %}<td>{{ row.sparkline | safe }}</td>{% endif %}
     <td>{{ row.value }}</td>
