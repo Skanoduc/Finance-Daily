@@ -51,26 +51,26 @@
   
   <div class="ticker-item">
     <span class="name">S&P 500</span>
-    <span class="val">7758.57</span>
-    <span class="chg pos">+0.39%</span>
+    <span class="val">7754.05</span>
+    <span class="chg pos">+0.33%</span>
   </div>
   
   <div class="ticker-item">
     <span class="name">Nasdaq Composite</span>
-    <span class="val">26638.59</span>
-    <span class="chg pos">+0.73%</span>
+    <span class="val">26616.94</span>
+    <span class="chg pos">+0.65%</span>
   </div>
   
   <div class="ticker-item">
     <span class="name">Dow Jones</span>
-    <span class="val">53843.28</span>
-    <span class="chg pos">+0.10%</span>
+    <span class="val">53830.81</span>
+    <span class="chg pos">+0.07%</span>
   </div>
   
   <div class="ticker-item">
     <span class="name">Russell 2000</span>
-    <span class="val">3045.3</span>
-    <span class="chg pos">+0.60%</span>
+    <span class="val">3046.78</span>
+    <span class="chg pos">+0.65%</span>
   </div>
   
   <div class="ticker-item">
@@ -117,20 +117,20 @@
   
   <div class="ticker-item">
     <span class="name">S&P/TSX (Canada)</span>
-    <span class="val">36665.39</span>
-    <span class="chg pos">+0.52%</span>
+    <span class="val">36667.61</span>
+    <span class="chg pos">+0.53%</span>
   </div>
   
   <div class="ticker-item">
     <span class="name">Bovespa (Brésil)</span>
-    <span class="val">167745.08</span>
-    <span class="chg neg">-0.08%</span>
+    <span class="val">167669.83</span>
+    <span class="chg neg">-0.12%</span>
   </div>
   
   <div class="ticker-item">
     <span class="name">IPC (Mexique)</span>
-    <span class="val">65845.19</span>
-    <span class="chg pos">+0.43%</span>
+    <span class="val">65811.24</span>
+    <span class="chg pos">+0.38%</span>
   </div>
   
 </div>
@@ -173,6 +173,22 @@
 </table>
 
 </main>
+
+<!-- Fenêtre modale actif (description + graphique agrandi) -->
+<div id="asset-modal-overlay">
+  <div class="asset-modal">
+    <button class="asset-modal-close" id="asset-modal-close" aria-label="Fermer">&times;</button>
+    <h3 id="asset-modal-title"></h3>
+    <p class="desc" id="asset-modal-desc"></p>
+    <div class="asset-modal-chart-wrap">
+      <div id="asset-modal-chart"></div>
+      <div class="asset-modal-tooltip" id="asset-modal-tooltip"></div>
+    </div>
+  </div>
+</div>
+
+
+<script src="static/asset-modal.js"></script>
 
 <footer class="site">
   Finance Daily — généré automatiquement le 12 août 2026 · Données : Yahoo Finance, FRED, ECB · À des fins d'information uniquement, ne constitue pas un conseil en investissement.
