@@ -160,20 +160,21 @@ def fetch_ticker_block(tickers: dict, period="2y"):
             # repasse en "naïves" pour pouvoir les comparer à nos dates de référence
             # (1er janvier, 1er du mois) sans erreur de type.
             hist.index = hist.index.tz_localize(None)
+            close = hist["Close"].dropna()  # retire les éventuelles valeurs manquantes (NaN)
             out[symbol] = {
                 "name": name,
-                "value": round(hist["Close"].iloc[-1], 2),
+                "value": round(close.iloc[-1], 2),
                 "day": pct_change(hist, 1),
                 "week": pct_change(hist, 5),
                 "mtd": variation_depuis(hist, month_start),
                 "ytd": variation_depuis(hist, ytd_start),
                 "y1": pct_change(hist, 252),
                 # 20 dernières clôtures pour la petite sparkline dans le tableau
-                "sparkline": [round(v, 2) for v in hist["Close"].tail(20).tolist()],
+                "sparkline": [round(v, 2) for v in close.tail(20).tolist()],
                 # ~90 dernières séances pour le graphique agrandi (fenêtre modale)
                 "history": [
                     {"d": idx.strftime("%Y-%m-%d"), "v": round(v, 2)}
-                    for idx, v in hist["Close"].tail(90).items()
+                    for idx, v in close.tail(90).items()
                 ],
             }
         except Exception as e:
