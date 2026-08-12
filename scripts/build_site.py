@@ -46,6 +46,7 @@ def cls_pct(v):
 
 def sparkline_svg(values, positive):
     """Petit graphique en ligne (SVG inline) à partir d'une liste de valeurs."""
+    values = [v for v in values if v is not None and v == v]  # "v == v" est False pour NaN
     if not values or len(values) < 2:
         return ""
     w, h, pad = 80, 24, 2
@@ -77,10 +78,11 @@ def row_from_ticker(symbol, d, category="action", asset_data=None):
     # Alimente le dictionnaire de données pour la fenêtre modale de la page
     # (description + historique complet pour le graphique agrandi)
     if asset_data is not None:
+        history = [p for p in d.get("history", []) if p.get("v") is not None and p["v"] == p["v"]]
         asset_data[symbol] = {
             "name": d["name"],
             "description": get_description(symbol, d["name"], category),
-            "history": d.get("history", []),
+            "history": history,
         }
     return row
 
