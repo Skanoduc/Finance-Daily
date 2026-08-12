@@ -12,6 +12,7 @@ import glob
 import shutil
 import datetime as dt
 from jinja2 import Environment, FileSystemLoader
+from config import FEATURES
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = os.path.join(ROOT, "templates")
@@ -42,8 +43,26 @@ def cls_pct(v):
     return "pos" if v > 0 else "neg"
 
 
+def sparkline_svg(values, positive):
+    """Petit graphique en ligne (SVG inline) à partir d'une liste de valeurs."""
+    if not values or len(values) < 2:
+        return ""
+    w, h, pad = 80, 24, 2
+    lo, hi = min(values), max(values)
+    span = (hi - lo) or 1
+    step = (w - 2 * pad) / (len(values) - 1)
+    points = " ".join(
+        f"{pad + i * step:.1f},{h - pad - ((v - lo) / span) * (h - 2 * pad):.1f}"
+        for i, v in enumerate(values)
+    )
+    color = "var(--positive)" if positive else "var(--negative)"
+    return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" '
+            f'class="sparkline"><polyline points="{points}" fill="none" '
+            f'stroke="{color}" stroke-width="1.5" /></svg>')
+
+
 def row_from_ticker(symbol, d):
-    return {
+    row = {
         "name": d["name"], "value": d["value"],
         "day": fmt_pct(d["day"]), "day_cls": cls_pct(d["day"]),
         "week": fmt_pct(d["week"]), "week_cls": cls_pct(d["week"]),
@@ -51,6 +70,9 @@ def row_from_ticker(symbol, d):
         "ytd": fmt_pct(d["ytd"]), "ytd_cls": cls_pct(d["ytd"]),
         "y1": fmt_pct(d["y1"]), "y1_cls": cls_pct(d["y1"]),
     }
+    if FEATURES["sparklines"]:
+        row["sparkline"] = sparkline_svg(d.get("sparkline", []), (d["day"] or 0) >= 0)
+    return row
 
 
 def build_ticker(raw):
@@ -161,9 +183,19 @@ def main():
            page_lede="Derniers indicateurs publiés (Fed, inflation, emploi, taux).",
            groups=[{"title": "États-Unis", "rows": macro_rows, "commentaire": ""}], **common)
 
+    # ---- Page ETFs ----
+    if FEATURES["etfs"] and raw.get("etfs"):
+        groups = [{"title": cat, "rows": [row_from_ticker(s, d) for s, d in tickers.items()], "commentaire": ""}
+                  for cat, tickers in raw["etfs"].items()]
+        render("category.html", "etfs.html", active="etfs",
+               page_title="ETFs", page_headline="ETFs (trackers)",
+               page_lede="Principaux trackers actions, secteurs, matières premières et marchés émergents.",
+               groups=groups, **common)
+
     # ---- Page Deep dives ----
     render("deepdive.html", "deep-dives.html", active="deepdive",
-           deepdives=analysis.get("deepdives", []), **common)
+           deepdives=analysis.get("deepdives", []),
+           deepdives_paused=not FEATURES["deepdives"], **common)
 
     # ---- Archives ----
     build_archives(common)

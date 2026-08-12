@@ -218,6 +218,8 @@ table.data td:first-child {
 }
 table.data tr:hover td { background: var(--surface); }
 
+.sparkline { display: block; }
+
 /* ---------- Analysis / narrative blocks ---------- */
 .analysis {
   background: var(--surface);

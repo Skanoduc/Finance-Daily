@@ -14,6 +14,7 @@
   <thead>
     <tr>
       <th style="text-align:left;">Actif</th>
+      {% if groups and groups[0].rows and groups[0].rows[0].sparkline is defined %}<th>20 séances</th>{% endif %}
       <th>Valeur</th>
       <th>Jour</th>
       <th>Semaine</th>
@@ -26,6 +27,7 @@
   {% for row in grp.rows %}
   <tr>
     <td>{{ row.name }}</td>
+    {% if row.sparkline is defined %}<td>{{ row.sparkline | safe }}</td>{% endif %}
     <td>{{ row.value }}</td>
     <td class="{{ row.day_cls }}">{{ row.day }}</td>
     <td class="{{ row.week_cls }}">{{ row.week }}</td>

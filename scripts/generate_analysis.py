@@ -16,35 +16,49 @@ import os
 import sys
 import datetime as dt
 import anthropic
+from config import FEATURES
 
 MODEL = "claude-sonnet-4-6"  # rapport qualité/prix adapté à une tâche quotidienne de ce type
 MAX_SEARCH_ROUNDS = 8  # limite de sécurité sur le nombre d'allers-retours avec l'outil de recherche
+MAX_TOKENS = 12000 if FEATURES["deepdives"] else 3000  # bien moins de texte à générer sans deep dives
 
 
 SYSTEM_PROMPT = """Tu es un analyste financier senior qui rédige la synthèse quotidienne
 d'une newsletter destinée à un lecteur avancé mais non-professionnel.
 Ton style : factuel, précis, sans emphase artificielle, tu expliques le "pourquoi" derrière les chiffres.
 Tu écris en français.
-
+""" + ("""
 Tu as accès à un outil de recherche web : utilise-le systématiquement pour les deep dives,
 afin d'expliquer les mouvements de marché avec de vrais faits du jour (résultats d'entreprise,
 annonces, données macro, événements géopolitiques) plutôt que des suppositions. Ne te contente
 jamais des chiffres seuls pour un deep dive : cherche toujours le "pourquoi" réel, et note l'URL
 de chaque source utilisée.
-
-Une fois tes recherches terminées, ta réponse finale doit être UNIQUEMENT le JSON demandé,
-sans texte avant/après, sans balises markdown, sans commentaire sur tes recherches."""
+""" if FEATURES["deepdives"] else """
+Tu n'as PAS accès à la recherche web pour cette tâche : base-toi uniquement sur les chiffres
+fournis pour la synthèse générale, sans détailler de deep dives sur des mouvements individuels.
+""") + """
+Ta réponse finale doit être UNIQUEMENT le JSON demandé, sans texte avant/après, sans balises
+markdown, sans commentaire. N'écris aucune phrase d'introduction du type "Let me compile..." :
+ton message doit commencer directement par l'accolade ouvrante du JSON."""
 
 
 def build_user_prompt(raw: dict) -> str:
+    deepdives_section = """
+Choisis 3 à 6 deep dives correspondant aux plus fortes variations (positives ou négatives,
+tous types d'actifs confondus) présentes dans les données. Chaque deep dive doit citer au
+moins une source réelle trouvée par la recherche web. Si tu ne trouves vraiment aucune
+information fiable sur un mouvement, dis-le explicitement dans le paragraphe plutôt que
+d'inventer une explication.""" if FEATURES["deepdives"] else """
+La fonctionnalité "deep dives" est actuellement en pause -> renvoie "deepdives": [] (liste vide),
+ne cherche pas à en produire."""
+
     return f"""Voici les données de marché du {raw['date']} (format JSON, variations en %):
 
 {json.dumps(raw, ensure_ascii=False, indent=2)}
 
-Rédige la synthèse du jour. Utilise la recherche web pour comprendre les vraies causes
-des mouvements les plus significatifs avant de rédiger, en particulier pour les deep dives.
+Rédige la synthèse du jour.
 
-Ta réponse finale (après tes recherches) doit être un objet JSON ayant EXACTEMENT cette forme :
+Ta réponse finale doit être un objet JSON ayant EXACTEMENT cette forme :
 
 {{
   "headline": "Titre court et factuel de l'actualité principale du jour (max 12 mots)",
@@ -61,49 +75,64 @@ Ta réponse finale (après tes recherches) doit être un objet JSON ayant EXACTE
     {{
       "tag": "ACTION | INDICE | MACRO | MATIÈRE PREMIÈRE",
       "title": "Nom de l'actif + variation",
-      "paragraphs": ["Explication détaillée et factuelle de pourquoi ce mouvement a eu lieu, basée sur tes recherches web réelles."],
+      "paragraphs": ["Explication détaillée et factuelle de pourquoi ce mouvement a eu lieu."],
       "sources": [{{"title": "Nom de la source", "url": "https://..."}}]
     }}
   ]
 }}
-
-Choisis 3 à 6 deep dives correspondant aux plus fortes variations (positives ou négatives,
-tous types d'actifs confondus) présentes dans les données. Chaque deep dive doit citer au
-moins une source réelle trouvée par la recherche web. Si tu ne trouves vraiment aucune
-information fiable sur un mouvement, dis-le explicitement dans le paragraphe plutôt que
-d'inventer une explication."""
+{deepdives_section}"""
 
 
-def run_with_web_search(client, raw):
-    """Boucle d'appels à l'API en laissant Claude utiliser l'outil web_search
-    autant de fois que nécessaire, jusqu'à obtenir la réponse finale en texte."""
+def run_analysis(client, raw):
+    """Appelle l'API. Si les deep dives sont activés, l'outil web_search est
+    utilisé (outil "serveur" : Anthropic exécute les recherches en interne).
+    Sinon, un simple appel sans outil est fait -> beaucoup plus rapide et
+    beaucoup moins cher.
+
+    Le seul cas où l'on doit rappeler l'API nous-même est "pause_turn"
+    (recherche encore en cours côté serveur) : on renvoie alors simplement
+    le contenu déjà généré et Claude reprend là où il s'est arrêté."""
     messages = [{"role": "user", "content": build_user_prompt(raw)}]
-    tools = [{"type": "web_search_20250305", "name": "web_search"}]
+    tools = [{"type": "web_search_20250305", "name": "web_search"}] if FEATURES["deepdives"] else None
 
     for _ in range(MAX_SEARCH_ROUNDS):
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=6000,
-            system=SYSTEM_PROMPT,
-            messages=messages,
-            tools=tools,
-        )
+        kwargs = dict(model=MODEL, max_tokens=MAX_TOKENS, system=SYSTEM_PROMPT, messages=messages)
+        if tools:
+            kwargs["tools"] = tools
+        resp = client.messages.create(**kwargs)
 
-        if resp.stop_reason != "tool_use":
-            # Claude a fini ses recherches et a répondu -> on récupère le texte
-            text_blocks = [b.text for b in resp.content if b.type == "text"]
-            return "\n".join(text_blocks).strip()
+        if resp.stop_reason == "pause_turn":
+            # Recherche encore en cours -> on renvoie le contenu tel quel pour continuer
+            messages.append({"role": "assistant", "content": resp.content})
+            continue
 
-        # Sinon, Claude veut faire une recherche : le serveur Anthropic exécute
-        # lui-même l'outil web_search (pas besoin de le faire côté client),
-        # on renvoie simplement la conversation telle quelle pour qu'il continue.
-        messages.append({"role": "assistant", "content": resp.content})
-        messages.append({
-            "role": "user",
-            "content": [b for b in resp.content if b.type == "tool_result"]
-        })
+        if resp.stop_reason == "max_tokens":
+            raise RuntimeError(
+                f"Réponse coupée avant la fin (max_tokens={MAX_TOKENS} atteint). "
+                f"Augmente MAX_TOKENS dans le script."
+            )
 
-    raise RuntimeError("Trop d'allers-retours de recherche web sans réponse finale")
+        text_blocks = [b.text for b in resp.content if b.type == "text"]
+        text = "\n".join(text_blocks).strip()
+        if not text:
+            raise RuntimeError(
+                f"Réponse vide de Claude (stop_reason={resp.stop_reason}). "
+                f"Contenu brut reçu : {resp.content}"
+            )
+        return text
+
+    raise RuntimeError("Trop d'allers-retours (pause_turn) sans réponse finale")
+
+
+def extract_json(text: str) -> str:
+    """Isole le premier objet JSON valide dans le texte, même si Claude a
+    ajouté du texte de narration avant/après (ex: 'Let me research...') malgré
+    la consigne de ne répondre qu'en JSON."""
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end < start:
+        raise ValueError(f"Aucun objet JSON trouvé dans la réponse :\n{text}")
+    return text[start:end + 1]
 
 
 def main():
@@ -115,10 +144,18 @@ def main():
 
     client = anthropic.Anthropic()  # lit ANTHROPIC_API_KEY depuis l'environnement
 
-    text = run_with_web_search(client, raw)
-    # Sécurité : au cas où le modèle encadrerait quand même sa réponse de ```json
-    text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-    analysis = json.loads(text)
+    text = run_analysis(client, raw)
+    # Extraction robuste : isole le JSON même si Claude a ajouté du texte
+    # de narration avant/après malgré la consigne, ou des balises ```json.
+    json_text = extract_json(text)
+    try:
+        analysis = json.loads(json_text)
+    except json.JSONDecodeError as e:
+        print("[erreur] Impossible de parser la réponse de Claude en JSON.")
+        print("--- Réponse brute reçue ---")
+        print(text)
+        print("--- Fin de la réponse brute ---")
+        raise
 
     out_path = f"data/analysis_{date_str}.json"
     with open(out_path, "w", encoding="utf-8") as f:

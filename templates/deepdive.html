@@ -8,6 +8,15 @@
   <p class="lede">Zoom sur les mouvements les plus significatifs du jour et leurs causes.</p>
 </div>
 
+{% if deepdives_paused %}
+<div class="analysis">
+  <p>Cette section est temporairement en pause pour maîtriser les coûts d'API. Le reste du
+  site (indices, devises, matières premières, ETFs, macro) continue de se mettre à jour
+  normalement chaque jour.</p>
+</div>
+{% elif not deepdives %}
+<div class="analysis"><p>Aucun mouvement suffisamment marquant aujourd'hui pour un deep dive.</p></div>
+{% endif %}
 {% for dd in deepdives %}
 <div class="deepdive">
   <span class="tag">{{ dd.tag }}</span>

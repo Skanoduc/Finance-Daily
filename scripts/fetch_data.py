@@ -16,6 +16,7 @@ import datetime as dt
 import os
 import time
 import yfinance as yf
+from config import FEATURES
 
 # ---------------------------------------------------------------------
 # 1. Définition de l'univers suivi
@@ -105,6 +106,24 @@ FRED_SERIES = {
     "DGS10": "Taux 10 ans US",
 }
 
+# ETFs (trackers) les plus suivis, par catégorie
+ETFS = {
+    "Actions larges": {
+        "SPY": "SPDR S&P 500", "QQQ": "Invesco Nasdaq 100", "VTI": "Vanguard Total US",
+        "IWDA.AS": "iShares MSCI World", "VWCE.DE": "Vanguard FTSE All-World",
+    },
+    "Sectoriels / thématiques": {
+        "XLK": "Technology Select Sector", "XLE": "Energy Select Sector",
+        "XLF": "Financial Select Sector", "SMH": "VanEck Semiconductor",
+    },
+    "Matières premières / obligataire": {
+        "GLD": "SPDR Gold Shares", "SLV": "iShares Silver", "TLT": "iShares 20+Y Treasury",
+    },
+    "Marchés émergents": {
+        "EEM": "iShares MSCI Emerging Markets", "MCHI": "iShares MSCI China",
+    },
+}
+
 
 def pct_change(hist, days_back):
     """Variation en % entre la dernière clôture et celle il y a N séances."""
@@ -149,6 +168,9 @@ def fetch_ticker_block(tickers: dict, period="2y"):
                 "mtd": variation_depuis(hist, month_start),
                 "ytd": variation_depuis(hist, ytd_start),
                 "y1": pct_change(hist, 252),
+                # 20 dernières clôtures, pour dessiner un petit graphique (sparkline)
+                # sur le site -> liste de nombres simples, la plus ancienne en premier.
+                "sparkline": [round(v, 2) for v in hist["Close"].tail(20).tolist()],
             }
         except Exception as e:
             print(f"[warn] échec récupération {symbol} ({name}) : {e}")
@@ -180,7 +202,7 @@ def fetch_fred(series_dict, api_key):
 def main():
     today_str = dt.date.today().isoformat()
     result = {"date": today_str, "indices": {}, "devises": {}, "matieres_premieres": {},
-              "actions": {}, "macro": {}}
+              "actions": {}, "macro": {}, "etfs": {}}
 
     for region, tickers in INDICES.items():
         result["indices"][region] = fetch_ticker_block(tickers)
@@ -189,10 +211,14 @@ def main():
     result["matieres_premieres"] = fetch_ticker_block(MATIERES_PREMIERES)
     result["actions"] = fetch_ticker_block(WATCHLIST_ACTIONS)
 
+    if FEATURES["etfs"]:
+        for categorie, tickers in ETFS.items():
+            result["etfs"][categorie] = fetch_ticker_block(tickers)
+
     fred_key = os.environ.get("FRED_API_KEY")
-    if fred_key:
+    if FEATURES["macro"] and fred_key:
         result["macro"] = fetch_fred(FRED_SERIES, fred_key)
-    else:
+    elif FEATURES["macro"]:
         print("[info] FRED_API_KEY absente -> section macro ignorée")
 
     os.makedirs("data", exist_ok=True)
