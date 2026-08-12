@@ -1,0 +1,658 @@
+{
+  "date": "2026-08-12",
+  "indices": {
+    "Europe": {
+      "^FCHI": {
+        "name": "CAC 40",
+        "value": 8674.94,
+        "day": -0.46,
+        "week": 0.07,
+        "mtd": 0.71,
+        "ytd": 5.85,
+        "y1": 9.48
+      },
+      "^GDAXI": {
+        "name": "DAX",
+        "value": 26331.07,
+        "day": -0.23,
+        "week": 0.78,
+        "mtd": 1.27,
+        "ytd": 7.3,
+        "y1": 8.87
+      },
+      "^FTSE": {
+        "name": "FTSE 100",
+        "value": 10833.15,
+        "day": -0.1,
+        "week": -0.51,
+        "mtd": -0.23,
+        "ytd": 8.86,
+        "y1": 18.2
+      },
+      "^STOXX50E": {
+        "name": "Euro Stoxx 50",
+        "value": 6533.99,
+        "day": -0.26,
+        "week": 0.88,
+        "mtd": 1.67,
+        "ytd": 10.3,
+        "y1": 22.18
+      },
+      "FTSEMIB.MI": {
+        "name": "FTSE MIB",
+        "value": 53698.66,
+        "day": -0.01,
+        "week": 0.47,
+        "mtd": 1.56,
+        "ytd": 18.35,
+        "y1": 28.05
+      },
+      "^IBEX": {
+        "name": "IBEX 35",
+        "value": 20204.4,
+        "day": -0.05,
+        "week": 0.73,
+        "mtd": 1.11,
+        "ytd": 15.5,
+        "y1": 32.25
+      }
+    },
+    "États-Unis": {
+      "^GSPC": {
+        "name": "S&P 500",
+        "value": 7750.83,
+        "day": 0.29,
+        "week": 0.35,
+        "mtd": 1.98,
+        "ytd": 13.01,
+        "y1": 21.61
+      },
+      "^IXIC": {
+        "name": "Nasdaq Composite",
+        "value": 26597.46,
+        "day": 0.57,
+        "week": 0.89,
+        "mtd": 2.64,
+        "ytd": 14.47,
+        "y1": 24.37
+      },
+      "^DJI": {
+        "name": "Dow Jones",
+        "value": 53810.69,
+        "day": 0.04,
+        "week": -0.99,
+        "mtd": 1.19,
+        "ytd": 11.22,
+        "y1": 22.37
+      },
+      "^RUT": {
+        "name": "Russell 2000",
+        "value": 3042.04,
+        "day": 0.49,
+        "week": 0.76,
+        "mtd": 2.02,
+        "ytd": 21.28,
+        "y1": 37.24
+      }
+    },
+    "Asie-Pacifique": {
+      "^N225": {
+        "name": "Nikkei 225",
+        "value": 66970.22,
+        "day": 2.08,
+        "week": 5.04,
+        "mtd": 5.04,
+        "ytd": 29.2,
+        "y1": 63.35
+      },
+      "^HSI": {
+        "name": "Hang Seng",
+        "value": 25652.82,
+        "day": -1.1,
+        "week": -0.77,
+        "mtd": -1.37,
+        "ytd": -2.6,
+        "y1": 3.55
+      },
+      "000001.SS": {
+        "name": "Shanghai Composite",
+        "value": NaN,
+        "day": NaN,
+        "week": NaN,
+        "mtd": NaN,
+        "ytd": NaN,
+        "y1": NaN
+      },
+      "^AXJO": {
+        "name": "ASX 200",
+        "value": 9250.6,
+        "day": 0.19,
+        "week": 1.15,
+        "mtd": 2.56,
+        "ytd": 5.99,
+        "y1": 4.8
+      },
+      "^KS11": {
+        "name": "KOSPI",
+        "value": 6345.53,
+        "day": 0.73,
+        "week": -0.21,
+        "mtd": 1.41,
+        "ytd": 47.24,
+        "y1": 96.42
+      },
+      "^BSESN": {
+        "name": "Sensex (Inde)",
+        "value": 77966.35,
+        "day": -0.24,
+        "week": -0.78,
+        "mtd": -0.86,
+        "ytd": -8.48,
+        "y1": -3.27
+      },
+      "^NSEI": {
+        "name": "Nifty 50 (Inde)",
+        "value": 24435.95,
+        "day": -0.15,
+        "week": -0.77,
+        "mtd": -1.37,
+        "ytd": -6.54,
+        "y1": -0.53
+      }
+    },
+    "Amériques": {
+      "^GSPTSE": {
+        "name": "S&P/TSX (Canada)",
+        "value": 36623.04,
+        "day": 0.4,
+        "week": 1.32,
+        "mtd": 2.29,
+        "ytd": 14.87,
+        "y1": 31.86
+      },
+      "^BVSP": {
+        "name": "Bovespa (Brésil)",
+        "value": 167857.22,
+        "day": -0.01,
+        "week": -5.55,
+        "mtd": -5.7,
+        "ytd": 4.56,
+        "y1": 23.5
+      },
+      "^MXX": {
+        "name": "IPC (Mexique)",
+        "value": 65628.57,
+        "day": 0.1,
+        "week": -1.35,
+        "mtd": -1.6,
+        "ytd": 2.32,
+        "y1": 12.49
+      }
+    },
+    "Autres": {}
+  },
+  "devises": {
+    "EURUSD=X": {
+      "name": "EUR/USD",
+      "value": 1.15,
+      "day": -0.18,
+      "week": -0.06,
+      "mtd": -0.16,
+      "ytd": -1.91,
+      "y1": -1.08
+    },
+    "GBPUSD=X": {
+      "name": "GBP/USD",
+      "value": 1.35,
+      "day": -0.13,
+      "week": 0.32,
+      "mtd": 0.02,
+      "ytd": 0.15,
+      "y1": 0.21
+    },
+    "USDJPY=X": {
+      "name": "USD/JPY",
+      "value": 159.5,
+      "day": 0.21,
+      "week": 1.14,
+      "mtd": 1.22,
+      "ytd": 1.76,
+      "y1": 8.27
+    },
+    "EURGBP=X": {
+      "name": "EUR/GBP",
+      "value": 0.85,
+      "day": -0.07,
+      "week": -0.4,
+      "mtd": -0.2,
+      "ytd": -2.08,
+      "y1": -1.31
+    },
+    "USDCNY=X": {
+      "name": "USD/CNY",
+      "value": 6.73,
+      "day": -0.21,
+      "week": -0.3,
+      "mtd": -0.27,
+      "ytd": -3.76,
+      "y1": -6.17
+    }
+  },
+  "matieres_premieres": {
+    "GC=F": {
+      "name": "Or (Gold)",
+      "value": 4464.1,
+      "day": 1.85,
+      "week": 5.14,
+      "mtd": 10.67,
+      "ytd": 3.47,
+      "y1": 33.13
+    },
+    "SI=F": {
+      "name": "Argent (Silver)",
+      "value": 65.64,
+      "day": 1.35,
+      "week": 5.71,
+      "mtd": 13.83,
+      "ytd": -6.96,
+      "y1": 74.3
+    },
+    "CL=F": {
+      "name": "Pétrole WTI",
+      "value": 83.02,
+      "day": -0.22,
+      "week": 10.37,
+      "mtd": 3.34,
+      "ytd": 44.84,
+      "y1": 29.8
+    },
+    "BZ=F": {
+      "name": "Pétrole Brent",
+      "value": 88.78,
+      "day": -0.15,
+      "week": 11.74,
+      "mtd": 5.98,
+      "ytd": 46.14,
+      "y1": 33.24
+    },
+    "NG=F": {
+      "name": "Gaz naturel",
+      "value": 2.8,
+      "day": 1.19,
+      "week": 4.17,
+      "mtd": 0.68,
+      "ytd": -22.61,
+      "y1": -5.21
+    },
+    "HG=F": {
+      "name": "Cuivre",
+      "value": 6.62,
+      "day": 0.06,
+      "week": -1.3,
+      "mtd": 1.57,
+      "ytd": 17.3,
+      "y1": 49.56
+    }
+  },
+  "actions": {
+    "AAPL": {
+      "name": "Apple",
+      "value": 301.46,
+      "day": -1.13,
+      "week": -2.98,
+      "mtd": -0.56,
+      "ytd": 11.54,
+      "y1": 33.19
+    },
+    "MSFT": {
+      "name": "Microsoft",
+      "value": 491.58,
+      "day": -2.43,
+      "week": 0.85,
+      "mtd": 0.81,
+      "ytd": 4.4,
+      "y1": -5.03
+    },
+    "NVDA": {
+      "name": "Nvidia",
+      "value": 223.79,
+      "day": 2.89,
+      "week": 2.08,
+      "mtd": 8.3,
+      "ytd": 18.65,
+      "y1": 23.08
+    },
+    "AMZN": {
+      "name": "Amazon",
+      "value": 268.02,
+      "day": -1.56,
+      "week": -1.7,
+      "mtd": -5.63,
+      "ytd": 18.33,
+      "y1": 21.11
+    },
+    "GOOGL": {
+      "name": "Alphabet",
+      "value": 341.18,
+      "day": -0.76,
+      "week": -5.86,
+      "mtd": -8.66,
+      "ytd": 8.4,
+      "y1": 70.23
+    },
+    "META": {
+      "name": "Meta",
+      "value": 578.65,
+      "day": -2.73,
+      "week": -1.58,
+      "mtd": -1.96,
+      "ytd": -10.87,
+      "y1": -24.54
+    },
+    "TSLA": {
+      "name": "Tesla",
+      "value": 326.26,
+      "day": -1.97,
+      "week": 1.46,
+      "mtd": 1.3,
+      "ytd": -25.52,
+      "y1": -3.77
+    },
+    "AVGO": {
+      "name": "Broadcom",
+      "value": 418.85,
+      "day": 0.67,
+      "week": 0.14,
+      "mtd": 6.79,
+      "ytd": 20.93,
+      "y1": 38.83
+    },
+    "AMD": {
+      "name": "AMD",
+      "value": 489.53,
+      "day": 3.21,
+      "week": 1.55,
+      "mtd": 1.01,
+      "ytd": 119.06,
+      "y1": 184.15
+    },
+    "NFLX": {
+      "name": "Netflix",
+      "value": 74.22,
+      "day": -0.76,
+      "week": 0.03,
+      "mtd": 1.21,
+      "ytd": -18.43,
+      "y1": -39.08
+    },
+    "JPM": {
+      "name": "JPMorgan Chase",
+      "value": 364.98,
+      "day": 0.81,
+      "week": 1.6,
+      "mtd": 3.5,
+      "ytd": 13.73,
+      "y1": 28.46
+    },
+    "GS": {
+      "name": "Goldman Sachs",
+      "value": 1037.28,
+      "day": 0.28,
+      "week": -2.18,
+      "mtd": 0.99,
+      "ytd": 14.54,
+      "y1": 47.12
+    },
+    "BAC": {
+      "name": "Bank of America",
+      "value": 64.62,
+      "day": 0.98,
+      "week": 2.17,
+      "mtd": 3.43,
+      "ytd": 16.76,
+      "y1": 43.05
+    },
+    "LLY": {
+      "name": "Eli Lilly",
+      "value": 1218.62,
+      "day": 0.3,
+      "week": 4.17,
+      "mtd": 8.67,
+      "ytd": 13.18,
+      "y1": 93.2
+    },
+    "UNH": {
+      "name": "UnitedHealth",
+      "value": 404.96,
+      "day": 0.69,
+      "week": -1.89,
+      "mtd": -2.5,
+      "ytd": 22.01,
+      "y1": 64.76
+    },
+    "PG": {
+      "name": "Procter & Gamble",
+      "value": 144.44,
+      "day": -0.53,
+      "week": -1.61,
+      "mtd": -0.37,
+      "ytd": 4.14,
+      "y1": -4.06
+    },
+    "KO": {
+      "name": "Coca-Cola",
+      "value": 87.15,
+      "day": 0.77,
+      "week": 0.37,
+      "mtd": 0.33,
+      "ytd": 27.77,
+      "y1": 26.67
+    },
+    "XOM": {
+      "name": "ExxonMobil",
+      "value": 159.59,
+      "day": -0.13,
+      "week": 5.25,
+      "mtd": 2.92,
+      "ytd": 31.87,
+      "y1": 55.61
+    },
+    "CAT": {
+      "name": "Caterpillar",
+      "value": 867.72,
+      "day": 2.89,
+      "week": -0.39,
+      "mtd": 4.54,
+      "ytd": 45.89,
+      "y1": 114.31
+    },
+    "BA": {
+      "name": "Boeing",
+      "value": 231.82,
+      "day": -0.61,
+      "week": -3.48,
+      "mtd": -0.71,
+      "ytd": 1.78,
+      "y1": 2.6
+    },
+    "MC.PA": {
+      "name": "LVMH",
+      "value": 464.95,
+      "day": -2.89,
+      "week": -3.07,
+      "mtd": -4.51,
+      "ytd": -26.37,
+      "y1": 0.78
+    },
+    "OR.PA": {
+      "name": "L'Oréal",
+      "value": 380.45,
+      "day": -0.85,
+      "week": -2.1,
+      "mtd": -2.39,
+      "ytd": 6.37,
+      "y1": -0.21
+    },
+    "TTE.PA": {
+      "name": "TotalEnergies",
+      "value": 75.53,
+      "day": -1.38,
+      "week": 2.34,
+      "mtd": -1.18,
+      "ytd": 37.76,
+      "y1": 51.75
+    },
+    "AIR.PA": {
+      "name": "Airbus",
+      "value": 213.65,
+      "day": 0.54,
+      "week": -0.6,
+      "mtd": 2.72,
+      "ytd": 6.82,
+      "y1": 18.4
+    },
+    "BNP.PA": {
+      "name": "BNP Paribas",
+      "value": 112.0,
+      "day": 0.25,
+      "week": -0.11,
+      "mtd": 0.2,
+      "ytd": 40.77,
+      "y1": 42.08
+    },
+    "SAN.PA": {
+      "name": "Sanofi",
+      "value": 75.42,
+      "day": 0.03,
+      "week": 1.23,
+      "mtd": 1.23,
+      "ytd": -3.26,
+      "y1": -4.67
+    },
+    "SAP.DE": {
+      "name": "SAP",
+      "value": 175.96,
+      "day": -2.62,
+      "week": 3.96,
+      "mtd": 6.88,
+      "ytd": -11.39,
+      "y1": -22.87
+    },
+    "ASML.AS": {
+      "name": "ASML",
+      "value": 1567.0,
+      "day": 0.84,
+      "week": 6.9,
+      "mtd": 10.38,
+      "ytd": 59.63,
+      "y1": 145.33
+    },
+    "NESN.SW": {
+      "name": "Nestlé",
+      "value": 79.06,
+      "day": -1.38,
+      "week": -2.81,
+      "mtd": -2.12,
+      "ytd": 7.65,
+      "y1": 14.13
+    },
+    "NOVN.SW": {
+      "name": "Novartis",
+      "value": 124.2,
+      "day": -1.32,
+      "week": -0.21,
+      "mtd": -0.24,
+      "ytd": 17.95,
+      "y1": 36.06
+    },
+    "SIE.DE": {
+      "name": "Siemens",
+      "value": 281.95,
+      "day": 0.61,
+      "week": -1.4,
+      "mtd": -1.17,
+      "ytd": 19.43,
+      "y1": 24.6
+    },
+    "ALV.DE": {
+      "name": "Allianz",
+      "value": 438.9,
+      "day": 0.73,
+      "week": 0.53,
+      "mtd": 1.39,
+      "ytd": 18.42,
+      "y1": 26.19
+    },
+    "9984.T": {
+      "name": "SoftBank",
+      "value": NaN,
+      "day": NaN,
+      "week": NaN,
+      "mtd": NaN,
+      "ytd": NaN,
+      "y1": NaN
+    },
+    "7203.T": {
+      "name": "Toyota",
+      "value": NaN,
+      "day": NaN,
+      "week": NaN,
+      "mtd": NaN,
+      "ytd": NaN,
+      "y1": NaN
+    },
+    "005930.KS": {
+      "name": "Samsung Electronics",
+      "value": 239500.0,
+      "day": 4.13,
+      "week": -0.21,
+      "mtd": 0.0,
+      "ytd": 86.97,
+      "y1": 244.47
+    },
+    "BABA": {
+      "name": "Alibaba",
+      "value": 124.91,
+      "day": -5.6,
+      "week": -3.16,
+      "mtd": -1.88,
+      "ytd": -19.06,
+      "y1": 4.73
+    },
+    "TCEHY": {
+      "name": "Tencent",
+      "value": 56.24,
+      "day": -5.51,
+      "week": -8.64,
+      "mtd": -10.13,
+      "ytd": -29.37,
+      "y1": -20.04
+    }
+  },
+  "macro": {
+    "FEDFUNDS": {
+      "label": "Taux directeur Fed",
+      "latest": "3.6300000000",
+      "latest_date": "2026-07-01",
+      "previous": "3.63"
+    },
+    "CPIAUCSL": {
+      "label": "Inflation US (CPI)",
+      "latest": "332.813",
+      "latest_date": "2026-07-01",
+      "previous": "332.568"
+    },
+    "UNRATE": {
+      "label": "Taux de chômage US",
+      "latest": "4.1",
+      "latest_date": "2026-07-01",
+      "previous": "4.2"
+    },
+    "DGS10": {
+      "label": "Taux 10 ans US",
+      "latest": "4.7200000000",
+      "latest_date": "2026-08-10",
+      "previous": "4.6500000000"
+    }
+  }
+}
